@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QPushButton" name="connect">
+  <widget class="QPushButton" name="btnConnect">
    <property name="geometry">
     <rect>
      <x>260</x>

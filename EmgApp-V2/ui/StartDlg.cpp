@@ -7,8 +7,6 @@ StartDlg::StartDlg(QWidget *parent) :
 {
     ui->setupUi(this);
     updateUi();
-
-    connect(NetConnectHelper::instance(), SIGNAL(netConnected(bool)), this, SLOT(onConnectResult(bool)), Qt::UniqueConnection);
 }
 
 StartDlg::~StartDlg()
@@ -28,20 +26,22 @@ void StartDlg::updateUi()
     setWindowTitle("EMG Demo");
     setFixedSize(640, 360);
     setWindowFlags(windowFlags()&~Qt::WindowContextHelpButtonHint);
-    ui->connect->setStyleSheet("background-color: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.494, fy:0.506, stop:0.0852273 rgba(255, 255, 255, 255), stop:0.892045 rgba(0, 0, 0, 227));color: rgb(0, 0, 0);");
+    ui->btnConnect->setStyleSheet("background-color: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.494, fy:0.506, stop:0.0852273 rgba(255, 255, 255, 255), stop:0.892045 rgba(0, 0, 0, 227));color: rgb(0, 0, 0);");
+
+    connect(ui->btnConnect, SIGNAL(clicked(bool)), EmgDataReceiver::instance(), SLOT(onConnectToHost()));
+    connect(EmgDataReceiver::instance(), SIGNAL(netConnected()), this, SLOT(onConnected()), Qt::QueuedConnection);
+    connect(EmgDataReceiver::instance(), SIGNAL(netError(QAbstractSocket::SocketError)), this, SLOT(onConnectError(QAbstractSocket::SocketError)), Qt::QueuedConnection);
 }
 
-void StartDlg::on_connect_clicked()
+void StartDlg::onConnected()
 {
-    NetConnectHelper::instance()->conectToHost("localhost", 4000);
+    qDebug() << "Connect to host success.";
+    accept();
+    disconnect(EmgDataReceiver::instance(), SIGNAL(netConnected()), this, SLOT(onConnectResult()));
+    disconnect(EmgDataReceiver::instance(), SIGNAL(netError(QAbstractSocket::SocketError)), this, SLOT(onConnectError(QAbstractSocket::SocketError)));
 }
 
-void StartDlg::onConnectResult(bool connected)
+void StartDlg::onConnectError(QAbstractSocket::SocketError sockError)
 {
-    if (connected) {
-        qDebug() << "Connect to host success.";
-        this->accept();
-    } else {
-        QMessageBox::warning(this, QStringLiteral("提示"), QStringLiteral("连接服务器失败,请检查网络或者是服务是否开启"), QMessageBox::Ok);
-    }
+    QMessageBox::warning(this, QStringLiteral("提示"), QStringLiteral("连接服务器失败,请检查网络或者是服务是否开启"), QMessageBox::Ok);
 }

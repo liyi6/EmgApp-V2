@@ -5,6 +5,8 @@
 #include <QPainter>
 #include <QMessageBox>
 
+#include "EmgDataReceiver.h"
+
 namespace Ui {
 class StartDlg;
 }
@@ -21,8 +23,8 @@ protected:
     void paintEvent(QPaintEvent*);
 
 private slots:
-    void on_connect_clicked();
-    void onConnectResult(bool connected);
+    void onConnected();
+    void onConnectError(QAbstractSocket::SocketError sockError);
 
 private:
     void updateUi();

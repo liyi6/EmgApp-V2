@@ -23,14 +23,18 @@ SOURCES += main.cpp\
     ui/MainWindow.cpp \
     ui/QCustomPlot.cpp \
     ui/StartDlg.cpp \
-    proccessor/EmgDataReceiver.cpp
+    proccessor/EmgDataReceiver.cpp \
+    proccessor/EmgDataRecorder.cpp \
+    ui/PlotArea.cpp
 
 HEADERS  += \
     ui/MainWindow.h \
     ui/QCustomPlot.h \
     ui/StartDlg.h \
     Defines.h \
-    proccessor/EmgDataReceiver.h
+    proccessor/EmgDataReceiver.h \
+    proccessor/EmgDataRecorder.h \
+    ui/PlotArea.h
 
 FORMS    += \
     ui/MainWindow.ui \
@@ -40,7 +44,7 @@ FORMS    += \
 
 INCLUDEPATH += \
     ui/ \
-    processor/
+    proccessor/
 
 DISTFILES += \
     EmgApp-V2.pro.user
