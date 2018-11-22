@@ -5,6 +5,7 @@
 #include <QPointer>
 #include "QCustomPlot.h"
 #include "Defines.h"
+#include "PlotArea.h"
 #include "EmgDataReceiver.h"
 #include "EmgDataRecorder.h"
 
@@ -26,11 +27,7 @@ signals:
 
 private slots:
     void on_btnFsc_clicked();
-    void onDrawData();
-    void onDrawData3();
-
     void on_btnStart_clicked();
-
     void on_btnStop_clicked();
 
 private:
@@ -38,10 +35,6 @@ private:
 
 private:
     Ui::MainWindow *ui;
-    QList<QPointer<QCPGraph>>  m_graphList;
-    QTimer                     m_dataTimer;
-    QHash<int, QVector<double>*> m_dataContainer;
-    QVector<double>            m_xAxisValue;
 };
 
 #endif // MAINWINDOW_H
