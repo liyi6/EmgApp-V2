@@ -44,7 +44,7 @@ void MainWindow::on_btnFsc_clicked()
 
 void MainWindow::on_btnStart_clicked()
 {
-    connect(EmgDataReceiver::instance(), SIGNAL(orignalDataComming(QByteArray&)), EmgDataRecorder::instance(), SLOT(onOrignalDataComming(QByteArray&)), Qt::QueuedConnection);
+    connect(EmgDataReceiver::instance(), SIGNAL(orignalDataComming(QByteArray)), EmgDataRecorder::instance(), SLOT(onOrignalDataComming(QByteArray)), Qt::QueuedConnection);
     emit start();
 
     for (int channel=0; channel<CHANNEL_SIZE; channel++) {
@@ -55,14 +55,32 @@ void MainWindow::on_btnStart_clicked()
             qWarning() << "Find plot error: can't find~~~ " << plotControlName;
             continue;
         }
-        plot->start();
+
+        if (channel < 4){
+            plot->start();
+        }
     }
 }
 
 void MainWindow::on_btnStop_clicked()
 {
-    disconnect(EmgDataReceiver::instance(), SIGNAL(orignalDataComming(QByteArray&)), EmgDataRecorder::instance(), SLOT(onOrignalDataComming(QByteArray&)));
+    disconnect(EmgDataReceiver::instance(), SIGNAL(orignalDataComming(QByteArray)), EmgDataRecorder::instance(), SLOT(onOrignalDataComming(QByteArray)));
     emit stop();
+
+
+    for (int channel=0; channel<CHANNEL_SIZE; channel++) {
+        // set plot channel
+        QString plotControlName = "channel" + QString::number(channel);
+        PlotArea* plot = this->findChild<PlotArea*>(plotControlName);
+        if (!plot) {
+            qWarning() << "Find plot error: can't find~~~ " << plotControlName;
+            continue;
+        }
+
+        if (channel < 4){
+            plot->stop();
+        }
+    }
 }
 
 

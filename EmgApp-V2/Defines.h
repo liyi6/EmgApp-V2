@@ -6,7 +6,7 @@
 #define   SERVER_IP      ( "localhost" )   // 服务器地址
 #define   SERVER_PORT           ( 4000 )   // 服务器端口
 #define   CHANNEL_SIZE            ( 16 )   // 通道数
-#define   X_AXIS_POINS          ( 2400 )   // 横轴显示点数
+#define   X_AXIS_POINS        ( 2400/2 )   // 横轴显示点数
 #define   REPLOT_FREQ             ( 40 )   // 刷新界面频率
 
 struct Command {

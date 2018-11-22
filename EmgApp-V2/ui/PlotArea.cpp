@@ -19,7 +19,6 @@ PlotArea::PlotArea(QWidget *parent)
     m_collector = new DataCollector;
     m_collectThread = new QThread(this);
     m_collector->moveToThread(m_collectThread);
-    m_collectThread->start();
 
     m_plotTimer = new QTimer(this);
     connect(m_plotTimer, SIGNAL(timeout()), this, SLOT(onReplot()));
@@ -36,6 +35,62 @@ void PlotArea::setChannel(int channel)
 
 void PlotArea::start()
 {
+    switch(m_channel) {
+    case 0:
+        connect(EmgDataReceiver::instance(), SIGNAL(channel0DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        break;
+    case 1:
+        connect(EmgDataReceiver::instance(), SIGNAL(channel1DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        break;
+    case 2:
+        connect(EmgDataReceiver::instance(), SIGNAL(channel2DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        break;
+    case 3:
+        connect(EmgDataReceiver::instance(), SIGNAL(channel3DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        break;
+    case 4:
+        connect(EmgDataReceiver::instance(), SIGNAL(channel4DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        break;
+    case 5:
+        connect(EmgDataReceiver::instance(), SIGNAL(channel5DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        break;
+    case 6:
+        connect(EmgDataReceiver::instance(), SIGNAL(channel6DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        break;
+    case 7:
+        connect(EmgDataReceiver::instance(), SIGNAL(channel7DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        break;
+    case 8:
+        connect(EmgDataReceiver::instance(), SIGNAL(channel8DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        break;
+    case 9:
+        connect(EmgDataReceiver::instance(), SIGNAL(channel9DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        break;
+    case 10:
+        connect(EmgDataReceiver::instance(), SIGNAL(channel10DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        break;
+    case 11:
+        connect(EmgDataReceiver::instance(), SIGNAL(channel11DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        break;
+    case 12:
+        connect(EmgDataReceiver::instance(), SIGNAL(channel12DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        break;
+    case 13:
+        connect(EmgDataReceiver::instance(), SIGNAL(channel13DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        break;
+    case 14:
+        connect(EmgDataReceiver::instance(), SIGNAL(channel14DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        break;
+    case 15:
+        connect(EmgDataReceiver::instance(), SIGNAL(channel15DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        break;
+    default:
+        break;
+    }
+
+
+    m_collectThread->start();
+
     if (m_plotTimer && !m_plotTimer->isActive()) {
         m_plotTimer->start(REPLOT_FREQ);
     }
@@ -46,6 +101,65 @@ void PlotArea::stop()
     if (m_plotTimer && m_plotTimer->isActive()) {
         m_plotTimer->stop();
     }
+
+    m_collectThread->quit();
+    m_collectThread->wait(2000);
+
+
+    switch(m_channel) {
+    case 0:
+        disconnect(EmgDataReceiver::instance(), SIGNAL(channel0DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        break;
+    case 1:
+        disconnect(EmgDataReceiver::instance(), SIGNAL(channel1DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        break;
+    case 2:
+        disconnect(EmgDataReceiver::instance(), SIGNAL(channel2DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        break;
+    case 3:
+        disconnect(EmgDataReceiver::instance(), SIGNAL(channel3DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        break;
+    case 4:
+        disconnect(EmgDataReceiver::instance(), SIGNAL(channel4DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        break;
+    case 5:
+        disconnect(EmgDataReceiver::instance(), SIGNAL(channel5DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        break;
+    case 6:
+        disconnect(EmgDataReceiver::instance(), SIGNAL(channel6DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        break;
+    case 7:
+        disconnect(EmgDataReceiver::instance(), SIGNAL(channel7DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        break;
+    case 8:
+        disconnect(EmgDataReceiver::instance(), SIGNAL(channel8DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        break;
+    case 9:
+        disconnect(EmgDataReceiver::instance(), SIGNAL(channel9DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        break;
+    case 10:
+        disconnect(EmgDataReceiver::instance(), SIGNAL(channel10DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        break;
+    case 11:
+        disconnect(EmgDataReceiver::instance(), SIGNAL(channel11DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        break;
+    case 12:
+        disconnect(EmgDataReceiver::instance(), SIGNAL(channel12DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        break;
+    case 13:
+        disconnect(EmgDataReceiver::instance(), SIGNAL(channel13DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        break;
+    case 14:
+        disconnect(EmgDataReceiver::instance(), SIGNAL(channel14DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        break;
+    case 15:
+        disconnect(EmgDataReceiver::instance(), SIGNAL(channel15DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        break;
+    default:
+        break;
+    }
+
+    //disconnect(EmgDataReceiver::instance(), SIGNAL(dataComming(int, short)), m_collector, SLOT(onDataComming(int, short)));
 }
 
 void PlotArea::onReplot()
@@ -81,10 +195,19 @@ void DataCollector::updateGraph(QPointer<QCPGraph> &graph)
 
 void DataCollector::onDataComming(int channel, short data)
 {
-    if (m_channel!=channel) {
+    if (m_channel !=channel) {
         return;
     }
 
+    {
+        QMutexLocker locker(&m_dataContainerMutex);
+        m_dataContainer.append(data);
+        m_dataContainer.removeFirst();
+    }
+}
+
+void DataCollector::onDataComming(short data)
+{
     {
         QMutexLocker locker(&m_dataContainerMutex);
         m_dataContainer.append(data);

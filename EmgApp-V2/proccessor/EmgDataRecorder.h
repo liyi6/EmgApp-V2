@@ -17,7 +17,7 @@ public:
 public slots:
     void onStartRecord();
     void onStopRecord();
-    void onOrignalDataComming(QByteArray& data);
+    void onOrignalDataComming(QByteArray data);
 
 private:
     explicit EmgDataRecorder(QObject *parent = 0);

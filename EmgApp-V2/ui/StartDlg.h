@@ -24,7 +24,7 @@ protected:
 
 private slots:
     void onConnected();
-    void onConnectError(QAbstractSocket::SocketError sockError);
+    void onConnectError();
 
 private:
     void updateUi();

@@ -17,7 +17,7 @@ EmgDataRecorder *EmgDataRecorder::instance()
     return m_instance;
 }
 
-void EmgDataRecorder::onOrignalDataComming(QByteArray &data)
+void EmgDataRecorder::onOrignalDataComming(QByteArray data)
 {
     if (m_recordFile) {
         m_recordFile->write(data);

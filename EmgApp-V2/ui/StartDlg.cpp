@@ -30,18 +30,18 @@ void StartDlg::updateUi()
 
     connect(ui->btnConnect, SIGNAL(clicked(bool)), EmgDataReceiver::instance(), SLOT(onConnectToHost()));
     connect(EmgDataReceiver::instance(), SIGNAL(netConnected()), this, SLOT(onConnected()), Qt::QueuedConnection);
-    connect(EmgDataReceiver::instance(), SIGNAL(netError(QAbstractSocket::SocketError)), this, SLOT(onConnectError(QAbstractSocket::SocketError)), Qt::QueuedConnection);
+    connect(EmgDataReceiver::instance(), SIGNAL(netError()), this, SLOT(onConnectError()), Qt::QueuedConnection);
 }
 
 void StartDlg::onConnected()
 {
     qDebug() << "Connect to host success.";
     accept();
-    disconnect(EmgDataReceiver::instance(), SIGNAL(netConnected()), this, SLOT(onConnectResult()));
-    disconnect(EmgDataReceiver::instance(), SIGNAL(netError(QAbstractSocket::SocketError)), this, SLOT(onConnectError(QAbstractSocket::SocketError)));
+    disconnect(EmgDataReceiver::instance(), SIGNAL(netConnected()), this, SLOT(onConnected()));
+    disconnect(EmgDataReceiver::instance(), SIGNAL(netError()), this, SLOT(onConnectError()));
 }
 
-void StartDlg::onConnectError(QAbstractSocket::SocketError sockError)
+void StartDlg::onConnectError()
 {
     QMessageBox::warning(this, QStringLiteral("提示"), QStringLiteral("连接服务器失败,请检查网络或者是服务是否开启"), QMessageBox::Ok);
 }

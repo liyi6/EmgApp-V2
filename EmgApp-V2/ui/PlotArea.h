@@ -7,6 +7,7 @@
 #include <QPointer>
 #include "QCustomPlot.h"
 #include "Defines.h"
+#include "EmgDataReceiver.h"
 
 class DataCollector;
 
@@ -42,6 +43,7 @@ public:
 
 public slots:
     void onDataComming(int channel, short data);
+    void onDataComming(short data);
 
 private:
     QVector<double>  m_xAxisValue;

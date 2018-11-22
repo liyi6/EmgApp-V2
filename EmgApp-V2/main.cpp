@@ -31,14 +31,5 @@ int main(int argc, char *argv[])
         recordThread = NULL;
         return 0;
     }
-
-    receiveThread->quit();
-    receiveThread->wait(2000);
-    receiveThread = NULL;
-
-    recordThread->quit();
-    recordThread->wait(2000);
-    recordThread = NULL;
-
     return a.exec();
 }
