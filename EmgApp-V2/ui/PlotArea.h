@@ -44,6 +44,7 @@ public:
 public slots:
     void onDataComming(int channel, short data);
     void onDataComming(short data);
+    void onDataComming(QVector<short> dataList);
 
 private:
     QVector<double>  m_xAxisValue;

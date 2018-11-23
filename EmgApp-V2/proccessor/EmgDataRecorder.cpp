@@ -17,6 +17,13 @@ EmgDataRecorder *EmgDataRecorder::instance()
     return m_instance;
 }
 
+EmgDataRecorder::~EmgDataRecorder()
+{
+    onStopRecord();
+
+    qDebug() << "~EmgDataRecorder() called.";
+}
+
 void EmgDataRecorder::onOrignalDataComming(QByteArray data)
 {
     if (m_recordFile) {

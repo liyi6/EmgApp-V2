@@ -37,6 +37,23 @@ signals:
     void channel14DataComming(short data);
     void channel15DataComming(short data);
 
+    void channel0DataComming(QVector<short> data);
+    void channel1DataComming(QVector<short> data);
+    void channel2DataComming(QVector<short> data);
+    void channel3DataComming(QVector<short> data);
+    void channel4DataComming(QVector<short> data);
+    void channel5DataComming(QVector<short> data);
+    void channel6DataComming(QVector<short> data);
+    void channel7DataComming(QVector<short> data);
+    void channel8DataComming(QVector<short> data);
+    void channel9DataComming(QVector<short> data);
+    void channel10DataComming(QVector<short> data);
+    void channel11DataComming(QVector<short> data);
+    void channel12DataComming(QVector<short> data);
+    void channel13DataComming(QVector<short> data);
+    void channel14DataComming(QVector<short> data);
+    void channel15DataComming(QVector<short> data);
+
 public slots:
     void onConnectToHost();
     void onSendStartCmd();

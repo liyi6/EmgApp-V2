@@ -13,6 +13,7 @@ class EmgDataRecorder : public QObject
     Q_OBJECT
 public:
     static EmgDataRecorder* instance();
+    ~EmgDataRecorder();
 
 public slots:
     void onStartRecord();
