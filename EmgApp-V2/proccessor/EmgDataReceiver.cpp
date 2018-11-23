@@ -156,26 +156,21 @@ void EmgDataReceiver::dataProcess(QByteArray &data)
 
 void EmgDataReceiver::dataProcessV2(QByteArray &data)
 {
-    static QByteArray channel0Data;
-    static QByteArray channel1Data;
-    static QByteArray channel2Data;
-    static QByteArray channel3Data;
-    static QByteArray channel4Data;
-    static QByteArray channel5Data;
-    static QByteArray channel6Data;
-    static QByteArray channel7Data;
-    static QByteArray channel8Data;
-    static QByteArray channel9Data;
-    static QByteArray channel10Data;
-    static QByteArray channel11Data;
-    static QByteArray channel12Data;
-    static QByteArray channel13Data;
-    static QByteArray channel14Data;
-    static QByteArray channel15Data;
-
-    static int dataCounter = 20;
-
     emit orignalDataComming(data);  // 发送原始数据
+
+
+//     QByteArray* channel8Data = nullptr;
+//     QByteArray* channel9Data = nullptr;
+//     QByteArray* channel10Data = nullptr;
+//     QByteArray* channel11Data = nullptr;
+//     QByteArray* channel12Data = nullptr;
+//     QByteArray* channel13Data = nullptr;
+//     QByteArray* channel14Data = nullptr;
+//     QByteArray* channel15Data = nullptr;
+
+    int dataCounter = 20;
+
+
     /**
      * channel数为16(0~15), 每个通道数据占2个Byte
      * 若某次传入的data的Byte数不为偶数时会有余留数据，需要保存到下次处理
@@ -188,149 +183,178 @@ void EmgDataReceiver::dataProcessV2(QByteArray &data)
     while (data.size() > 1) {
         switch (m_curChennel) {
         case 0:{
-            channel0Data.append(data[0]);
-            channel0Data.append(data[1]);
-            if (channel0Data.size() == dataCounter) {
-                emit channel0DataComming(channel0Data);
-                channel0Data.clear();
+            if (m_channel0Data == nullptr) {
+                m_channel0Data = new QByteArray;
+            }
+            m_channel0Data->append(data.at(0));
+            m_channel0Data->append(data.at(1));
+            qDebug() << "channel0Data'size is" << m_channel0Data->size();
+
+            if (m_channel0Data->size() == dataCounter) {
+                qDebug() << "channel0Data'size -->" << m_channel0Data->size();
+                emit channel0DataComming(m_channel0Data);
+                m_channel0Data = NULL;
             }
             break;
         }
-        case 1:{
-            channel1Data.append(data[0]);
-            channel1Data.append(data[1]);
-            if (channel1Data.size() == dataCounter) {
-                emit channel1DataComming(channel1Data);
-                channel1Data.clear();
-            }
-            break;
-        }
-        case 2:{
-            channel2Data.append(data[0]);
-            channel2Data.append(data[1]);
-            if (channel2Data.size() == dataCounter) {
-                emit channel2DataComming(channel2Data);
-                channel2Data.clear();
-            }
-            break;
-        }
-        case 3:{
-            channel3Data.append(data[0]);
-            channel3Data.append(data[1]);
-            if (channel3Data.size() == dataCounter) {
-                emit channel3DataComming(channel3Data);
-                channel3Data.clear();
-            }
-            break;
-        }
-        case 4:{
-            channel4Data.append(data[0]);
-            channel4Data.append(data[1]);
-            if (channel4Data.size() == dataCounter) {
-                emit channel4DataComming(channel4Data);
-                channel4Data.clear();
-            }
-            break;
-        }
-        case 5:{
-            channel5Data.append(data[0]);
-            channel5Data.append(data[1]);
-            if (channel5Data.size() == dataCounter) {
-                emit channel5DataComming(channel5Data);
-                channel5Data.clear();
-            }
-            break;
-        }
-        case 6:{
-            channel6Data.append(data[0]);
-            channel6Data.append(data[1]);
-            if (channel6Data.size() == dataCounter) {
-                emit channel6DataComming(channel6Data);
-                channel6Data.clear();
-            }
-            break;
-        }
-        case 7:{
-            channel7Data.append(data[0]);
-            channel7Data.append(data[1]);
-            if (channel7Data.size() == dataCounter) {
-                emit channel7DataComming(channel7Data);
-                channel7Data.clear();
-            }
-            break;
-        }
-        case 8:{
-            channel8Data.append(data[0]);
-            channel8Data.append(data[1]);
-            if (channel8Data.size() == dataCounter) {
-                emit channel8DataComming(channel8Data);
-                channel8Data.clear();
-            }
-            break;
-        }
-        case 9:{
-            channel9Data.append(data[0]);
-            channel9Data.append(data[1]);
-            if (channel9Data.size() == dataCounter) {
-                emit channel9DataComming(channel9Data);
-                channel9Data.clear();
-            }
-            break;
-        }
-        case 10:{
-            channel10Data.append(data[0]);
-            channel10Data.append(data[1]);
-            if (channel10Data.size() == dataCounter) {
-                emit channel10DataComming(channel10Data);
-                channel10Data.clear();
-            }
-            break;
-        }
-        case 11:{
-            channel11Data.append(data[0]);
-            channel11Data.append(data[1]);
-            if (channel11Data.size() == dataCounter) {
-                emit channel11DataComming(channel11Data);
-                channel11Data.clear();
-            }
-            break;
-        }
-        case 12:{
-            channel12Data.append(data[0]);
-            channel12Data.append(data[1]);
-            if (channel12Data.size() == dataCounter) {
-                emit channel12DataComming(channel12Data);
-                channel12Data.clear();
-            }
-            break;
-        }
-        case 13:{
-            channel13Data.append(data[0]);
-            channel13Data.append(data[1]);
-            if (channel13Data.size() == dataCounter) {
-                emit channel13DataComming(channel13Data);
-                channel13Data.clear();
-            }
-            break;
-        }
-        case 14:{
-            channel14Data.append(data[0]);
-            channel14Data.append(data[1]);
-            if (channel14Data.size() == dataCounter) {
-                emit channel14DataComming(channel14Data);
-                channel14Data.clear();
-            }
-            break;
-        }
-        case 15:{
-            channel15Data.append(data[0]);
-            channel15Data.append(data[1]);
-            if (channel15Data.size() == dataCounter) {
-                emit channel15DataComming(channel15Data);
-                channel15Data.clear();
-            }
-            break;
-        }
+//        case 1:{
+//            if (!channel1Data) {
+//                channel1Data = new QByteArray;
+//            }
+//            channel1Data->append(data[0]);
+//            channel1Data->append(data[1]);
+//            qDebug() << "channel1Data'size is" << channel1Data->size();
+//            if (channel1Data->size() == dataCounter) {
+//                emit channel1DataComming(channel1Data);
+//                channel1Data = NULL;
+//            }
+//            break;
+//        }
+//        case 2:{
+//            if (!channel2Data) {
+//                channel2Data = new QByteArray;
+//            }
+//            channel2Data->append(data[0]);
+//            channel2Data->append(data[1]);
+//            if (channel2Data->size() == dataCounter) {
+//                emit channel2DataComming(channel2Data);
+//                channel2Data = NULL;
+//            }
+//            break;
+//        }
+//        case 3:{
+//            if (!channel3Data) {
+//                channel3Data = new QByteArray;
+//            }
+//            channel3Data->append(data[0]);
+//            channel3Data->append(data[1]);
+//            if (channel3Data->size() == dataCounter) {
+//                emit channel3DataComming(channel3Data);
+//                channel3Data = NULL;
+//            }
+//            break;
+//        }
+//        case 4:{
+//            if (!channel4Data) {
+//                channel4Data = new QByteArray;
+//            }
+//            channel4Data->append(data[0]);
+//            channel4Data->append(data[1]);
+//            if (channel4Data->size() == dataCounter) {
+//                emit channel4DataComming(channel4Data);
+//                channel4Data = NULL;
+//            }
+//            break;
+//        }
+//        case 5:{
+//            if (!channel5Data) {
+//                channel5Data = new QByteArray;
+//            }
+//            channel5Data->append(data[0]);
+//            channel5Data->append(data[1]);
+//            if (channel5Data->size() == dataCounter) {
+//                emit channel5DataComming(channel5Data);
+//                channel5Data = NULL;
+//            }
+//            break;
+//        }
+//        case 6:{
+//            if (!channel6Data) {
+//                channel6Data = new QByteArray;
+//            }
+//            channel6Data->append(data[0]);
+//            channel6Data->append(data[1]);
+//            if (channel6Data->size() == dataCounter) {
+//                emit channel6DataComming(channel6Data);
+//                channel6Data = NULL;
+//            }
+//            break;
+//        }
+//        case 7:{
+//            if (!channel7Data) {
+//                channel7Data = new QByteArray;
+//            }
+//            channel7Data->append(data[0]);
+//            channel7Data->append(data[1]);
+//            if (channel7Data->size() == dataCounter) {
+//                emit channel7DataComming(channel7Data);
+//                channel7Data = NULL;
+//            }
+//            break;
+//        }
+//        case 8:{
+//            channel8Data.append(data[0]);
+//            channel8Data.append(data[1]);
+//            if (channel8Data.size() == dataCounter) {
+//                emit channel8DataComming(channel8Data);
+//                channel8Data.clear();
+//            }
+//            break;
+//        }
+//        case 9:{
+//            channel9Data.append(data[0]);
+//            channel9Data.append(data[1]);
+//            if (channel9Data.size() == dataCounter) {
+//                emit channel9DataComming(channel9Data);
+//                channel9Data.clear();
+//            }
+//            break;
+//        }
+//        case 10:{
+//            channel10Data.append(data[0]);
+//            channel10Data.append(data[1]);
+//            if (channel10Data.size() == dataCounter) {
+//                emit channel10DataComming(channel10Data);
+//                channel10Data.clear();
+//            }
+//            break;
+//        }
+//        case 11:{
+//            channel11Data.append(data[0]);
+//            channel11Data.append(data[1]);
+//            if (channel11Data.size() == dataCounter) {
+//                emit channel11DataComming(channel11Data);
+//                channel11Data.clear();
+//            }
+//            break;
+//        }
+//        case 12:{
+//            channel12Data.append(data[0]);
+//            channel12Data.append(data[1]);
+//            if (channel12Data.size() == dataCounter) {
+//                emit channel12DataComming(channel12Data);
+//                channel12Data.clear();
+//            }
+//            break;
+//        }
+//        case 13:{
+//            channel13Data.append(data[0]);
+//            channel13Data.append(data[1]);
+//            if (channel13Data.size() == dataCounter) {
+//                emit channel13DataComming(channel13Data);
+//                channel13Data.clear();
+//            }
+//            break;
+//        }
+//        case 14:{
+//            channel14Data.append(data[0]);
+//            channel14Data.append(data[1]);
+//            if (channel14Data.size() == dataCounter) {
+//                emit channel14DataComming(channel14Data);
+//                channel14Data.clear();
+//            }
+//            break;
+//        }
+//        case 15:{
+//            channel15Data.append(data[0]);
+//            channel15Data.append(data[1]);
+//            if (channel15Data.size() == dataCounter) {
+
+//                emit channel15DataComming(channel15Data);
+//                channel15Data.clear();
+//            }
+//            break;
+//        }
         default:
             break;
         }

@@ -20,22 +20,22 @@ signals:
     void orignalDataComming(QByteArray data);
     void dataComming(int channel, short data);
 
-    void channel0DataComming(QByteArray data);
-    void channel1DataComming(QByteArray data);
-    void channel2DataComming(QByteArray data);
-    void channel3DataComming(QByteArray data);
-    void channel4DataComming(QByteArray data);
-    void channel5DataComming(QByteArray data);
-    void channel6DataComming(QByteArray data);
-    void channel7DataComming(QByteArray data);
-    void channel8DataComming(QByteArray data);
-    void channel9DataComming(QByteArray data);
-    void channel10DataComming(QByteArray data);
-    void channel11DataComming(QByteArray data);
-    void channel12DataComming(QByteArray data);
-    void channel13DataComming(QByteArray data);
-    void channel14DataComming(QByteArray data);
-    void channel15DataComming(QByteArray data);
+    void channel0DataComming(QByteArray* data);
+    void channel1DataComming(QByteArray* data);
+    void channel2DataComming(QByteArray* data);
+    void channel3DataComming(QByteArray* data);
+    void channel4DataComming(QByteArray* data);
+    void channel5DataComming(QByteArray* data);
+    void channel6DataComming(QByteArray* data);
+    void channel7DataComming(QByteArray* data);
+    void channel8DataComming(QByteArray* data);
+    void channel9DataComming(QByteArray* data);
+    void channel10DataComming(QByteArray* data);
+    void channel11DataComming(QByteArray* data);
+    void channel12DataComming(QByteArray* data);
+    void channel13DataComming(QByteArray* data);
+    void channel14DataComming(QByteArray* data);
+    void channel15DataComming(QByteArray* data);
 
 public slots:
     void onConnectToHost();
@@ -62,6 +62,16 @@ private:
     bool          m_headFind;   // 是否找到数据头
     QByteArray    m_dataLeft;   // dataLeft为上次处理后的余留数据(当数据)
     int           m_curChennel; // 当前通道
+
+
+    QByteArray* m_channel0Data = nullptr;
+//    QByteArray* channel1Data = nullptr;
+//    QByteArray* channel2Data = nullptr;
+//    QByteArray* channel3Data = nullptr;
+//    QByteArray* channel4Data = nullptr;
+//    QByteArray* channel5Data = nullptr;
+//    QByteArray* channel6Data = nullptr;
+//    QByteArray* channel7Data = nullptr;
 };
 
 #endif // EMGDATARECEIVER_H
