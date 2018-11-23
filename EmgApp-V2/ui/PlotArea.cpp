@@ -37,110 +37,56 @@ void PlotArea::start()
 {
     switch(m_channel) {
     case 0:
-        connect(EmgDataReceiver::instance(), SIGNAL(channel0DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        connect(EmgDataReceiver::instance(), SIGNAL(channel0DataComming(QByteArray)), m_collector, SLOT(onDataComming(QByteArray)));
         break;
     case 1:
-        connect(EmgDataReceiver::instance(), SIGNAL(channel1DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        connect(EmgDataReceiver::instance(), SIGNAL(channel1DataComming(QByteArray)), m_collector, SLOT(onDataComming(QByteArray)));
         break;
     case 2:
-        connect(EmgDataReceiver::instance(), SIGNAL(channel2DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        connect(EmgDataReceiver::instance(), SIGNAL(channel2DataComming(QByteArray)), m_collector, SLOT(onDataComming(QByteArray)));
         break;
     case 3:
-        connect(EmgDataReceiver::instance(), SIGNAL(channel3DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        connect(EmgDataReceiver::instance(), SIGNAL(channel3DataComming(QByteArray)), m_collector, SLOT(onDataComming(QByteArray)));
         break;
     case 4:
-        connect(EmgDataReceiver::instance(), SIGNAL(channel4DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        connect(EmgDataReceiver::instance(), SIGNAL(channel4DataComming(QByteArray)), m_collector, SLOT(onDataComming(QByteArray)));
         break;
     case 5:
-        connect(EmgDataReceiver::instance(), SIGNAL(channel5DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        connect(EmgDataReceiver::instance(), SIGNAL(channel5DataComming(QByteArray)), m_collector, SLOT(onDataComming(QByteArray)));
         break;
     case 6:
-        connect(EmgDataReceiver::instance(), SIGNAL(channel6DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        connect(EmgDataReceiver::instance(), SIGNAL(channel6DataComming(QByteArray)), m_collector, SLOT(onDataComming(QByteArray)));
         break;
     case 7:
-        connect(EmgDataReceiver::instance(), SIGNAL(channel7DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        connect(EmgDataReceiver::instance(), SIGNAL(channel7DataComming(QByteArray)), m_collector, SLOT(onDataComming(QByteArray)));
         break;
     case 8:
-        connect(EmgDataReceiver::instance(), SIGNAL(channel8DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        connect(EmgDataReceiver::instance(), SIGNAL(channel8DataComming(QByteArray)), m_collector, SLOT(onDataComming(QByteArray)));
         break;
     case 9:
-        connect(EmgDataReceiver::instance(), SIGNAL(channel9DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        connect(EmgDataReceiver::instance(), SIGNAL(channel9DataComming(QByteArray)), m_collector, SLOT(onDataComming(QByteArray)));
         break;
     case 10:
-        connect(EmgDataReceiver::instance(), SIGNAL(channel10DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        connect(EmgDataReceiver::instance(), SIGNAL(channel10DataComming(QByteArray)), m_collector, SLOT(onDataComming(QByteArray)));
         break;
     case 11:
-        connect(EmgDataReceiver::instance(), SIGNAL(channel11DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        connect(EmgDataReceiver::instance(), SIGNAL(channel11DataComming(QByteArray)), m_collector, SLOT(onDataComming(QByteArray)));
         break;
     case 12:
-        connect(EmgDataReceiver::instance(), SIGNAL(channel12DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        connect(EmgDataReceiver::instance(), SIGNAL(channel12DataComming(QByteArray)), m_collector, SLOT(onDataComming(QByteArray)));
         break;
     case 13:
-        connect(EmgDataReceiver::instance(), SIGNAL(channel13DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        connect(EmgDataReceiver::instance(), SIGNAL(channel13DataComming(QByteArray)), m_collector, SLOT(onDataComming(QByteArray)));
         break;
     case 14:
-        connect(EmgDataReceiver::instance(), SIGNAL(channel14DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        connect(EmgDataReceiver::instance(), SIGNAL(channel14DataComming(QByteArray)), m_collector, SLOT(onDataComming(QByteArray)));
         break;
     case 15:
-        connect(EmgDataReceiver::instance(), SIGNAL(channel15DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        connect(EmgDataReceiver::instance(), SIGNAL(channel15DataComming(QByteArray)), m_collector, SLOT(onDataComming(QByteArray)));
         break;
     default:
         break;
     }
-
-    switch(m_channel) {
-    case 0:
-        connect(EmgDataReceiver::instance(), SIGNAL(channel0DataComming(QVector<short>)), m_collector, SLOT(onDataComming(QVector<short>)));
-        break;
-    case 1:
-        connect(EmgDataReceiver::instance(), SIGNAL(channel1DataComming(QVector<short>)), m_collector, SLOT(onDataComming(QVector<short>)));
-        break;
-    case 2:
-        connect(EmgDataReceiver::instance(), SIGNAL(channel2DataComming(QVector<short>)), m_collector, SLOT(onDataComming(QVector<short>)));
-        break;
-    case 3:
-        connect(EmgDataReceiver::instance(), SIGNAL(channel3DataComming(QVector<short>)), m_collector, SLOT(onDataComming(QVector<short>)));
-        break;
-    case 4:
-        connect(EmgDataReceiver::instance(), SIGNAL(channel4DataComming(QVector<short>)), m_collector, SLOT(onDataComming(QVector<short>)));
-        break;
-    case 5:
-        connect(EmgDataReceiver::instance(), SIGNAL(channel5DataComming(QVector<short>)), m_collector, SLOT(onDataComming(QVector<short>)));
-        break;
-    case 6:
-        connect(EmgDataReceiver::instance(), SIGNAL(channel6DataComming(QVector<short>)), m_collector, SLOT(onDataComming(QVector<short>)));
-        break;
-    case 7:
-        connect(EmgDataReceiver::instance(), SIGNAL(channel7DataComming(QVector<short>)), m_collector, SLOT(onDataComming(QVector<short>)));
-        break;
-    case 8:
-        connect(EmgDataReceiver::instance(), SIGNAL(channel8DataComming(QVector<short>)), m_collector, SLOT(onDataComming(QVector<short>)));
-        break;
-    case 9:
-        connect(EmgDataReceiver::instance(), SIGNAL(channel9DataComming(QVector<short>)), m_collector, SLOT(onDataComming(QVector<short>)));
-        break;
-    case 10:
-        connect(EmgDataReceiver::instance(), SIGNAL(channel10DataComming(QVector<short>)), m_collector, SLOT(onDataComming(QVector<short>)));
-        break;
-    case 11:
-        connect(EmgDataReceiver::instance(), SIGNAL(channel11DataComming(QVector<short>)), m_collector, SLOT(onDataComming(QVector<short>)));
-        break;
-    case 12:
-        connect(EmgDataReceiver::instance(), SIGNAL(channel12DataComming(QVector<short>)), m_collector, SLOT(onDataComming(QVector<short>)));
-        break;
-    case 13:
-        connect(EmgDataReceiver::instance(), SIGNAL(channel13DataComming(QVector<short>)), m_collector, SLOT(onDataComming(QVector<short>)));
-        break;
-    case 14:
-        connect(EmgDataReceiver::instance(), SIGNAL(channel14DataComming(QVector<short>)), m_collector, SLOT(onDataComming(QVector<short>)));
-        break;
-    case 15:
-        connect(EmgDataReceiver::instance(), SIGNAL(channel15DataComming(QVector<short>)), m_collector, SLOT(onDataComming(QVector<short>)));
-        break;
-    default:
-        break;
-    }
-
 
     m_collectThread->start();
 
@@ -161,105 +107,52 @@ void PlotArea::stop()
 
     switch(m_channel) {
     case 0:
-        disconnect(EmgDataReceiver::instance(), SIGNAL(channel0DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        disconnect(EmgDataReceiver::instance(), SIGNAL(channel0DataComming(QByteArray)), m_collector, SLOT(onDataComming(QByteArray)));
         break;
     case 1:
-        disconnect(EmgDataReceiver::instance(), SIGNAL(channel1DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        disconnect(EmgDataReceiver::instance(), SIGNAL(channel1DataComming(QByteArray)), m_collector, SLOT(onDataComming(QByteArray)));
         break;
     case 2:
-        disconnect(EmgDataReceiver::instance(), SIGNAL(channel2DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        disconnect(EmgDataReceiver::instance(), SIGNAL(channel2DataComming(QByteArray)), m_collector, SLOT(onDataComming(QByteArray)));
         break;
     case 3:
-        disconnect(EmgDataReceiver::instance(), SIGNAL(channel3DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        disconnect(EmgDataReceiver::instance(), SIGNAL(channel3DataComming(QByteArray)), m_collector, SLOT(onDataComming(QByteArray)));
         break;
     case 4:
-        disconnect(EmgDataReceiver::instance(), SIGNAL(channel4DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        disconnect(EmgDataReceiver::instance(), SIGNAL(channel4DataComming(QByteArray)), m_collector, SLOT(onDataComming(QByteArray)));
         break;
     case 5:
-        disconnect(EmgDataReceiver::instance(), SIGNAL(channel5DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        disconnect(EmgDataReceiver::instance(), SIGNAL(channel5DataComming(QByteArray)), m_collector, SLOT(onDataComming(QByteArray)));
         break;
     case 6:
-        disconnect(EmgDataReceiver::instance(), SIGNAL(channel6DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        disconnect(EmgDataReceiver::instance(), SIGNAL(channel6DataComming(QByteArray)), m_collector, SLOT(onDataComming(QByteArray)));
         break;
     case 7:
-        disconnect(EmgDataReceiver::instance(), SIGNAL(channel7DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        disconnect(EmgDataReceiver::instance(), SIGNAL(channel7DataComming(QByteArray)), m_collector, SLOT(onDataComming(QByteArray)));
         break;
     case 8:
-        disconnect(EmgDataReceiver::instance(), SIGNAL(channel8DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        disconnect(EmgDataReceiver::instance(), SIGNAL(channel8DataComming(QByteArray)), m_collector, SLOT(onDataComming(QByteArray)));
         break;
     case 9:
-        disconnect(EmgDataReceiver::instance(), SIGNAL(channel9DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        disconnect(EmgDataReceiver::instance(), SIGNAL(channel9DataComming(QByteArray)), m_collector, SLOT(onDataComming(QByteArray)));
         break;
     case 10:
-        disconnect(EmgDataReceiver::instance(), SIGNAL(channel10DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        disconnect(EmgDataReceiver::instance(), SIGNAL(channel10DataComming(QByteArray)), m_collector, SLOT(onDataComming(QByteArray)));
         break;
     case 11:
-        disconnect(EmgDataReceiver::instance(), SIGNAL(channel11DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        disconnect(EmgDataReceiver::instance(), SIGNAL(channel11DataComming(QByteArray)), m_collector, SLOT(onDataComming(QByteArray)));
         break;
     case 12:
-        disconnect(EmgDataReceiver::instance(), SIGNAL(channel12DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        disconnect(EmgDataReceiver::instance(), SIGNAL(channel12DataComming(QByteArray)), m_collector, SLOT(onDataComming(QByteArray)));
         break;
     case 13:
-        disconnect(EmgDataReceiver::instance(), SIGNAL(channel13DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        disconnect(EmgDataReceiver::instance(), SIGNAL(channel13DataComming(QByteArray)), m_collector, SLOT(onDataComming(QByteArray)));
         break;
     case 14:
-        disconnect(EmgDataReceiver::instance(), SIGNAL(channel14DataComming(short)), m_collector, SLOT(onDataComming(short)));
+        disconnect(EmgDataReceiver::instance(), SIGNAL(channel14DataComming(QByteArray)), m_collector, SLOT(onDataComming(QByteArray)));
         break;
     case 15:
-        disconnect(EmgDataReceiver::instance(), SIGNAL(channel15DataComming(short)), m_collector, SLOT(onDataComming(short)));
-        break;
-    default:
-        break;
-    }
-
-    switch(m_channel) {
-    case 0:
-        disconnect(EmgDataReceiver::instance(), SIGNAL(channel0DataComming(QVector<short>)), m_collector, SLOT(onDataComming(QVector<short>)));
-        break;
-    case 1:
-        disconnect(EmgDataReceiver::instance(), SIGNAL(channel1DataComming(QVector<short>)), m_collector, SLOT(onDataComming(QVector<short>)));
-        break;
-    case 2:
-        disconnect(EmgDataReceiver::instance(), SIGNAL(channel2DataComming(QVector<short>)), m_collector, SLOT(onDataComming(QVector<short>)));
-        break;
-    case 3:
-        disconnect(EmgDataReceiver::instance(), SIGNAL(channel3DataComming(QVector<short>)), m_collector, SLOT(onDataComming(QVector<short>)));
-        break;
-    case 4:
-        disconnect(EmgDataReceiver::instance(), SIGNAL(channel4DataComming(QVector<short>)), m_collector, SLOT(onDataComming(QVector<short>)));
-        break;
-    case 5:
-        disconnect(EmgDataReceiver::instance(), SIGNAL(channel5DataComming(QVector<short>)), m_collector, SLOT(onDataComming(QVector<short>)));
-        break;
-    case 6:
-        disconnect(EmgDataReceiver::instance(), SIGNAL(channel6DataComming(QVector<short>)), m_collector, SLOT(onDataComming(QVector<short>)));
-        break;
-    case 7:
-        disconnect(EmgDataReceiver::instance(), SIGNAL(channel7DataComming(QVector<short>)), m_collector, SLOT(onDataComming(QVector<short>)));
-        break;
-    case 8:
-        disconnect(EmgDataReceiver::instance(), SIGNAL(channel8DataComming(QVector<short>)), m_collector, SLOT(onDataComming(QVector<short>)));
-        break;
-    case 9:
-        connect(EmgDataReceiver::instance(), SIGNAL(channel9DataComming(QVector<short>)), m_collector, SLOT(onDataComming(QVector<short>)));
-        break;
-    case 10:
-        disconnect(EmgDataReceiver::instance(), SIGNAL(channel10DataComming(QVector<short>)), m_collector, SLOT(onDataComming(QVector<short>)));
-        break;
-    case 11:
-        disconnect(EmgDataReceiver::instance(), SIGNAL(channel11DataComming(QVector<short>)), m_collector, SLOT(onDataComming(QVector<short>)));
-        break;
-    case 12:
-        disconnect(EmgDataReceiver::instance(), SIGNAL(channel12DataComming(QVector<short>)), m_collector, SLOT(onDataComming(QVector<short>)));
-        break;
-    case 13:
-        disconnect(EmgDataReceiver::instance(), SIGNAL(channel13DataComming(QVector<short>)), m_collector, SLOT(onDataComming(QVector<short>)));
-        break;
-    case 14:
-        disconnect(EmgDataReceiver::instance(), SIGNAL(channel14DataComming(QVector<short>)), m_collector, SLOT(onDataComming(QVector<short>)));
-        break;
-    case 15:
-        disconnect(EmgDataReceiver::instance(), SIGNAL(channel15DataComming(QVector<short>)), m_collector, SLOT(onDataComming(QVector<short>)));
+        disconnect(EmgDataReceiver::instance(), SIGNAL(channel15DataComming(QByteArray)), m_collector, SLOT(onDataComming(QByteArray)));
         break;
     default:
         break;
@@ -321,13 +214,16 @@ void DataCollector::onDataComming(short data)
     }
 }
 
-void DataCollector::onDataComming(QVector<short> dataList)
+void DataCollector::onDataComming(QByteArray data)
 {
     {
         QMutexLocker locker(&m_dataContainerMutex);
-        for (int i; i<dataList.size(); i++) {
-            m_dataContainer.append(dataList.at(i));
+        while (data.size() > 1) {
+            short channelData = data[0] & 0x000000FF;
+            channelData |= ((data[1] << 8) & 0x0000FF00);
+            m_dataContainer.append(channelData);
             m_dataContainer.removeFirst();
+
         }
     }
 }

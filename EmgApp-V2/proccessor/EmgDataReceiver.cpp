@@ -95,37 +95,18 @@ void EmgDataReceiver::onReadReady()
                 qDebug() << "Success to find head of data.";
                 m_headFind = true;
                 data.remove(0, 4);
-                dataProcess(data);
+                dataProcessV2(data);
             } else {
                 qWarning() << "Head of data find failed, data will be bannished";
             }
         } else {
-            dataProcess(data);
+            dataProcessV2(data);
         }
     }
 }
 
 void EmgDataReceiver::dataProcess(QByteArray &data)
 {
-    static int fec = 10;
-
-    static QVector<short> channel0DataList;
-    static QVector<short> channel1DataList;
-    static QVector<short> channel2DataList;
-    static QVector<short> channel3DataList;
-    static QVector<short> channel4DataList;
-    static QVector<short> channel5DataList;
-    static QVector<short> channel6DataList;
-    static QVector<short> channel7DataList;
-    static QVector<short> channel8DataList;
-    static QVector<short> channel9DataList;
-    static QVector<short> channel10DataList;
-    static QVector<short> channel11DataList;
-    static QVector<short> channel12DataList;
-    static QVector<short> channel13DataList;
-    static QVector<short> channel14DataList;
-    static QVector<short> channel15DataList;
-
     emit orignalDataComming(data);  // 发送原始数据
     /**
      * channel数为16(0~15), 每个通道数据占2个Byte
@@ -139,184 +120,7 @@ void EmgDataReceiver::dataProcess(QByteArray &data)
     while(data.size() > 1) {
         short channelData = data[0] & 0x000000FF;
         channelData |= ((data[1] << 8) & 0x0000FF00);
-
-        //emit dataComming(m_curChennel, channelData);
-
-//        if (++fec%5 == 0) {
-//            switch(m_curChennel) {
-//            case 0:
-//                emit channel0DataComming(channelData);
-//                break;
-//            case 1:
-//                emit channel1DataComming(channelData);
-//                break;
-//            case 2:
-//                emit channel2DataComming(channelData);
-//                break;
-//            case 3:
-//                emit channel3DataComming(channelData);
-//                break;
-//            case 4:
-//                emit channel4DataComming(channelData);
-//                break;
-//            case 5:
-//                emit channel5DataComming(channelData);
-//                break;
-//            case 6:
-//                emit channel6DataComming(channelData);
-//                break;
-//            case 7:
-//                emit channel7DataComming(channelData);
-//                break;
-//            case 8:
-//                emit channel8DataComming(channelData);
-//                break;
-//            case 9:
-//                emit channel9DataComming(channelData);
-//                break;
-//            case 10:
-//                emit channel10DataComming(channelData);
-//                break;
-//            case 11:
-//                emit channel11DataComming(channelData);
-//                break;
-//            case 12:
-//                emit channel12DataComming(channelData);
-//                break;
-//            case 13:
-//                emit channel13DataComming(channelData);
-//                break;
-//            case 14:
-//                emit channel14DataComming(channelData);
-//                break;
-//            case 15:
-//                emit channel15DataComming(channelData);
-//                break;
-//            default:
-//                break;
-//            }
-//        }
-
-
-        switch(m_curChennel) {
-        case 0:
-            channel0DataList.append(channelData);
-            if (channel0DataList.size() > fec) {
-                emit channel0DataComming(channel0DataList);
-                channel0DataList.clear();
-            }
-            break;
-        case 1:
-            channel1DataList.append(channelData);
-            if (channel1DataList.size() > fec) {
-                emit channel1DataComming(channel1DataList);
-                channel1DataList.clear();
-            }
-            break;
-        case 2:
-            channel2DataList.append(channelData);
-            if (channel2DataList.size() > fec) {
-                emit channel2DataComming(channel2DataList);
-                channel2DataList.clear();
-            }
-            break;
-        case 3:
-            channel3DataList.append(channelData);
-            if (channel3DataList.size() > fec) {
-                emit channel3DataComming(channel3DataList);
-                channel3DataList.clear();
-            }
-            break;
-        case 4:
-            channel4DataList.append(channelData);
-            if (channel4DataList.size() > fec) {
-                emit channel4DataComming(channel4DataList);
-                channel4DataList.clear();
-            }
-            break;
-        case 5:
-            channel5DataList.append(channelData);
-            if (channel5DataList.size() > fec) {
-                emit channel5DataComming(channel5DataList);
-                channel5DataList.clear();
-            }
-            break;
-        case 6:
-            channel6DataList.append(channelData);
-            if (channel6DataList.size() > fec) {
-                emit channel6DataComming(channel6DataList);
-                channel6DataList.clear();
-            }
-            break;
-        case 7:
-            channel7DataList.append(channelData);
-            if (channel7DataList.size() > fec) {
-                emit channel7DataComming(channel7DataList);
-                channel7DataList.clear();
-            }
-            break;
-        case 8:
-            channel8DataList.append(channelData);
-            if (channel8DataList.size() > fec) {
-                emit channel8DataComming(channel8DataList);
-                channel8DataList.clear();
-            }
-            break;
-        case 9:
-            channel9DataList.append(channelData);
-            if (channel9DataList.size() > fec) {
-                emit channel9DataComming(channel9DataList);
-                channel9DataList.clear();
-            }
-            break;
-        case 10:
-            channel10DataList.append(channelData);
-            if (channel10DataList.size() > fec) {
-                emit channel10DataComming(channel10DataList);
-                channel10DataList.clear();
-            }
-            break;
-        case 11:
-            channel11DataList.append(channelData);
-            if (channel11DataList.size() > fec) {
-                emit channel11DataComming(channel11DataList);
-                channel11DataList.clear();
-            }
-            break;
-        case 12:
-            channel12DataList.append(channelData);
-            if (channel12DataList.size() > fec) {
-                emit channel12DataComming(channel12DataList);
-                channel12DataList.clear();
-            }
-            break;
-        case 13:
-            channel13DataList.append(channelData);
-            if (channel13DataList.size() > fec) {
-                emit channel13DataComming(channel13DataList);
-                channel13DataList.clear();
-            }
-            break;
-        case 14:
-            channel14DataList.append(channelData);
-            if (channel14DataList.size() > fec) {
-                emit channel14DataComming(channel14DataList);
-                channel14DataList.clear();
-            }
-            break;
-        case 15:
-            channel15DataList.append(channelData);
-            if (channel15DataList.size() > fec) {
-                emit channel15DataComming(channel15DataList);
-                channel15DataList.clear();
-            }
-            break;
-        default:
-            break;
-        }
-
-
-
+        emit dataComming(m_curChennel, channelData);
         m_curChennel = ++m_curChennel % CHANNEL_SIZE;
         data.remove(0,2);
     }
@@ -347,6 +151,196 @@ void EmgDataReceiver::dataProcess(QByteArray &data)
         //            m_dataLeft = data;
         //        }
         //    }
+
+}
+
+void EmgDataReceiver::dataProcessV2(QByteArray &data)
+{
+    static QByteArray channel0Data;
+    static QByteArray channel1Data;
+    static QByteArray channel2Data;
+    static QByteArray channel3Data;
+    static QByteArray channel4Data;
+    static QByteArray channel5Data;
+    static QByteArray channel6Data;
+    static QByteArray channel7Data;
+    static QByteArray channel8Data;
+    static QByteArray channel9Data;
+    static QByteArray channel10Data;
+    static QByteArray channel11Data;
+    static QByteArray channel12Data;
+    static QByteArray channel13Data;
+    static QByteArray channel14Data;
+    static QByteArray channel15Data;
+
+    static int dataCounter = 20;
+
+    emit orignalDataComming(data);  // 发送原始数据
+    /**
+     * channel数为16(0~15), 每个通道数据占2个Byte
+     * 若某次传入的data的Byte数不为偶数时会有余留数据，需要保存到下次处理
+     */
+
+    if (m_dataLeft.size() > 0) {
+        data.prepend(m_dataLeft);
+    }
+
+    while (data.size() > 1) {
+        switch (m_curChennel) {
+        case 0:{
+            channel0Data.append(data[0]);
+            channel0Data.append(data[1]);
+            if (channel0Data.size() == dataCounter) {
+                emit channel0DataComming(channel0Data);
+                channel0Data.clear();
+            }
+            break;
+        }
+        case 1:{
+            channel1Data.append(data[0]);
+            channel1Data.append(data[1]);
+            if (channel1Data.size() == dataCounter) {
+                emit channel1DataComming(channel1Data);
+                channel1Data.clear();
+            }
+            break;
+        }
+        case 2:{
+            channel2Data.append(data[0]);
+            channel2Data.append(data[1]);
+            if (channel2Data.size() == dataCounter) {
+                emit channel2DataComming(channel2Data);
+                channel2Data.clear();
+            }
+            break;
+        }
+        case 3:{
+            channel3Data.append(data[0]);
+            channel3Data.append(data[1]);
+            if (channel3Data.size() == dataCounter) {
+                emit channel3DataComming(channel3Data);
+                channel3Data.clear();
+            }
+            break;
+        }
+        case 4:{
+            channel4Data.append(data[0]);
+            channel4Data.append(data[1]);
+            if (channel4Data.size() == dataCounter) {
+                emit channel4DataComming(channel4Data);
+                channel4Data.clear();
+            }
+            break;
+        }
+        case 5:{
+            channel5Data.append(data[0]);
+            channel5Data.append(data[1]);
+            if (channel5Data.size() == dataCounter) {
+                emit channel5DataComming(channel5Data);
+                channel5Data.clear();
+            }
+            break;
+        }
+        case 6:{
+            channel6Data.append(data[0]);
+            channel6Data.append(data[1]);
+            if (channel6Data.size() == dataCounter) {
+                emit channel6DataComming(channel6Data);
+                channel6Data.clear();
+            }
+            break;
+        }
+        case 7:{
+            channel7Data.append(data[0]);
+            channel7Data.append(data[1]);
+            if (channel7Data.size() == dataCounter) {
+                emit channel7DataComming(channel7Data);
+                channel7Data.clear();
+            }
+            break;
+        }
+        case 8:{
+            channel8Data.append(data[0]);
+            channel8Data.append(data[1]);
+            if (channel8Data.size() == dataCounter) {
+                emit channel8DataComming(channel8Data);
+                channel8Data.clear();
+            }
+            break;
+        }
+        case 9:{
+            channel9Data.append(data[0]);
+            channel9Data.append(data[1]);
+            if (channel9Data.size() == dataCounter) {
+                emit channel9DataComming(channel9Data);
+                channel9Data.clear();
+            }
+            break;
+        }
+        case 10:{
+            channel10Data.append(data[0]);
+            channel10Data.append(data[1]);
+            if (channel10Data.size() == dataCounter) {
+                emit channel10DataComming(channel10Data);
+                channel10Data.clear();
+            }
+            break;
+        }
+        case 11:{
+            channel11Data.append(data[0]);
+            channel11Data.append(data[1]);
+            if (channel11Data.size() == dataCounter) {
+                emit channel11DataComming(channel11Data);
+                channel11Data.clear();
+            }
+            break;
+        }
+        case 12:{
+            channel12Data.append(data[0]);
+            channel12Data.append(data[1]);
+            if (channel12Data.size() == dataCounter) {
+                emit channel12DataComming(channel12Data);
+                channel12Data.clear();
+            }
+            break;
+        }
+        case 13:{
+            channel13Data.append(data[0]);
+            channel13Data.append(data[1]);
+            if (channel13Data.size() == dataCounter) {
+                emit channel13DataComming(channel13Data);
+                channel13Data.clear();
+            }
+            break;
+        }
+        case 14:{
+            channel14Data.append(data[0]);
+            channel14Data.append(data[1]);
+            if (channel14Data.size() == dataCounter) {
+                emit channel14DataComming(channel14Data);
+                channel14Data.clear();
+            }
+            break;
+        }
+        case 15:{
+            channel15Data.append(data[0]);
+            channel15Data.append(data[1]);
+            if (channel15Data.size() == dataCounter) {
+                emit channel15DataComming(channel15Data);
+                channel15Data.clear();
+            }
+            break;
+        }
+        default:
+            break;
+        }
+        m_curChennel = ++m_curChennel % CHANNEL_SIZE;
+        data.remove(0,2);
+    }
+
+    if (data.size() == 1) {
+        m_dataLeft = data;
+    }
 
 }
 
