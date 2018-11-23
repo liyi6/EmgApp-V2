@@ -2,19 +2,38 @@
 
 EmgDataReceiver* EmgDataReceiver::m_instance = NULL;
 
-EmgDataReceiver::EmgDataReceiver(QObject *parent)
+EmgDataReceiver:: EmgDataReceiver(QObject *parent)
     : QObject(parent),
       m_socket(NULL),
       m_curChennel(0),
       m_headFind(false)
 {
+    // 初始化socket
     m_socket = new QTcpSocket(this);
     connect(m_socket, SIGNAL(connected()), this, SIGNAL(netConnected()));
     connect(m_socket, SIGNAL(disconnected()), this, SLOT(onNetDisconect()));
     connect(m_socket, SIGNAL(error(QAbstractSocket::SocketError)), this, SLOT(onNetError(QAbstractSocket::SocketError)));
     connect(m_socket, SIGNAL(readyRead()), this, SLOT(onReadReady()));
 
+    // 初始化每次接收的剩余数据
     m_dataLeft.clear();
+
+    // 初始化每个通道的存储数据，以及相应的锁
+    for (int channel=0; channel<CHANNEL_SIZE; channel++) {
+        QVector<double> dataVec;
+        for (int i=0; i<X_AXIS_POINS; i++) {
+            dataVec.append(0);
+        }
+        m_dataContainer.insert(channel, dataVec);
+
+        QMutex* dataVecMutex = new QMutex;
+        m_dataContainerMutex.append(dataVecMutex);
+    }
+
+    // 初始化每个横轴
+    for (int i=0; i<X_AXIS_POINS; i++) {
+        m_xAxisValue.append(i);
+    }
 }
 
 EmgDataReceiver::~EmgDataReceiver()
@@ -95,12 +114,12 @@ void EmgDataReceiver::onReadReady()
                 qDebug() << "Success to find head of data.";
                 m_headFind = true;
                 data.remove(0, 4);
-                dataProcessV2(data);
+                dataProcessV3(data);
             } else {
                 qWarning() << "Head of data find failed, data will be bannished";
             }
         } else {
-            dataProcessV2(data);
+            dataProcessV3(data);
         }
     }
 }
@@ -154,23 +173,9 @@ void EmgDataReceiver::dataProcess(QByteArray &data)
 
 }
 
-void EmgDataReceiver::dataProcessV2(QByteArray &data)
+void EmgDataReceiver::dataProcessV3(QByteArray &data)
 {
     emit orignalDataComming(data);  // 发送原始数据
-
-
-//     QByteArray* channel8Data = nullptr;
-//     QByteArray* channel9Data = nullptr;
-//     QByteArray* channel10Data = nullptr;
-//     QByteArray* channel11Data = nullptr;
-//     QByteArray* channel12Data = nullptr;
-//     QByteArray* channel13Data = nullptr;
-//     QByteArray* channel14Data = nullptr;
-//     QByteArray* channel15Data = nullptr;
-
-    int dataCounter = 20;
-
-
     /**
      * channel数为16(0~15), 每个通道数据占2个Byte
      * 若某次传入的data的Byte数不为偶数时会有余留数据，需要保存到下次处理
@@ -180,183 +185,15 @@ void EmgDataReceiver::dataProcessV2(QByteArray &data)
         data.prepend(m_dataLeft);
     }
 
-    while (data.size() > 1) {
-        switch (m_curChennel) {
-        case 0:{
-            if (m_channel0Data == nullptr) {
-                m_channel0Data = new QByteArray;
-            }
-            m_channel0Data->append(data.at(0));
-            m_channel0Data->append(data.at(1));
-            qDebug() << "channel0Data'size is" << m_channel0Data->size();
-
-            if (m_channel0Data->size() == dataCounter) {
-                qDebug() << "channel0Data'size -->" << m_channel0Data->size();
-                emit channel0DataComming(m_channel0Data);
-                m_channel0Data = NULL;
-            }
-            break;
-        }
-//        case 1:{
-//            if (!channel1Data) {
-//                channel1Data = new QByteArray;
-//            }
-//            channel1Data->append(data[0]);
-//            channel1Data->append(data[1]);
-//            qDebug() << "channel1Data'size is" << channel1Data->size();
-//            if (channel1Data->size() == dataCounter) {
-//                emit channel1DataComming(channel1Data);
-//                channel1Data = NULL;
-//            }
-//            break;
-//        }
-//        case 2:{
-//            if (!channel2Data) {
-//                channel2Data = new QByteArray;
-//            }
-//            channel2Data->append(data[0]);
-//            channel2Data->append(data[1]);
-//            if (channel2Data->size() == dataCounter) {
-//                emit channel2DataComming(channel2Data);
-//                channel2Data = NULL;
-//            }
-//            break;
-//        }
-//        case 3:{
-//            if (!channel3Data) {
-//                channel3Data = new QByteArray;
-//            }
-//            channel3Data->append(data[0]);
-//            channel3Data->append(data[1]);
-//            if (channel3Data->size() == dataCounter) {
-//                emit channel3DataComming(channel3Data);
-//                channel3Data = NULL;
-//            }
-//            break;
-//        }
-//        case 4:{
-//            if (!channel4Data) {
-//                channel4Data = new QByteArray;
-//            }
-//            channel4Data->append(data[0]);
-//            channel4Data->append(data[1]);
-//            if (channel4Data->size() == dataCounter) {
-//                emit channel4DataComming(channel4Data);
-//                channel4Data = NULL;
-//            }
-//            break;
-//        }
-//        case 5:{
-//            if (!channel5Data) {
-//                channel5Data = new QByteArray;
-//            }
-//            channel5Data->append(data[0]);
-//            channel5Data->append(data[1]);
-//            if (channel5Data->size() == dataCounter) {
-//                emit channel5DataComming(channel5Data);
-//                channel5Data = NULL;
-//            }
-//            break;
-//        }
-//        case 6:{
-//            if (!channel6Data) {
-//                channel6Data = new QByteArray;
-//            }
-//            channel6Data->append(data[0]);
-//            channel6Data->append(data[1]);
-//            if (channel6Data->size() == dataCounter) {
-//                emit channel6DataComming(channel6Data);
-//                channel6Data = NULL;
-//            }
-//            break;
-//        }
-//        case 7:{
-//            if (!channel7Data) {
-//                channel7Data = new QByteArray;
-//            }
-//            channel7Data->append(data[0]);
-//            channel7Data->append(data[1]);
-//            if (channel7Data->size() == dataCounter) {
-//                emit channel7DataComming(channel7Data);
-//                channel7Data = NULL;
-//            }
-//            break;
-//        }
-//        case 8:{
-//            channel8Data.append(data[0]);
-//            channel8Data.append(data[1]);
-//            if (channel8Data.size() == dataCounter) {
-//                emit channel8DataComming(channel8Data);
-//                channel8Data.clear();
-//            }
-//            break;
-//        }
-//        case 9:{
-//            channel9Data.append(data[0]);
-//            channel9Data.append(data[1]);
-//            if (channel9Data.size() == dataCounter) {
-//                emit channel9DataComming(channel9Data);
-//                channel9Data.clear();
-//            }
-//            break;
-//        }
-//        case 10:{
-//            channel10Data.append(data[0]);
-//            channel10Data.append(data[1]);
-//            if (channel10Data.size() == dataCounter) {
-//                emit channel10DataComming(channel10Data);
-//                channel10Data.clear();
-//            }
-//            break;
-//        }
-//        case 11:{
-//            channel11Data.append(data[0]);
-//            channel11Data.append(data[1]);
-//            if (channel11Data.size() == dataCounter) {
-//                emit channel11DataComming(channel11Data);
-//                channel11Data.clear();
-//            }
-//            break;
-//        }
-//        case 12:{
-//            channel12Data.append(data[0]);
-//            channel12Data.append(data[1]);
-//            if (channel12Data.size() == dataCounter) {
-//                emit channel12DataComming(channel12Data);
-//                channel12Data.clear();
-//            }
-//            break;
-//        }
-//        case 13:{
-//            channel13Data.append(data[0]);
-//            channel13Data.append(data[1]);
-//            if (channel13Data.size() == dataCounter) {
-//                emit channel13DataComming(channel13Data);
-//                channel13Data.clear();
-//            }
-//            break;
-//        }
-//        case 14:{
-//            channel14Data.append(data[0]);
-//            channel14Data.append(data[1]);
-//            if (channel14Data.size() == dataCounter) {
-//                emit channel14DataComming(channel14Data);
-//                channel14Data.clear();
-//            }
-//            break;
-//        }
-//        case 15:{
-//            channel15Data.append(data[0]);
-//            channel15Data.append(data[1]);
-//            if (channel15Data.size() == dataCounter) {
-
-//                emit channel15DataComming(channel15Data);
-//                channel15Data.clear();
-//            }
-//            break;
-//        }
-        default:
-            break;
+    while(data.size() > 1) {
+        short channelData = data[0] & 0x000000FF;
+        channelData |= ((data[1] << 8) & 0x0000FF00);
+        QVector<double> dataVec = m_dataContainer.value(m_curChennel);
+        QMutex* dataVecMutex = m_dataContainerMutex.at(m_curChennel);
+        {
+            QMutexLocker locker(dataVecMutex);
+            dataVec.append(channelData);
+            dataVec.removeFirst();
         }
         m_curChennel = ++m_curChennel % CHANNEL_SIZE;
         data.remove(0,2);
@@ -365,7 +202,16 @@ void EmgDataReceiver::dataProcessV2(QByteArray &data)
     if (data.size() == 1) {
         m_dataLeft = data;
     }
+}
 
+void EmgDataReceiver::updateGraph(int channel, QPointer<QCPGraph> &graph)
+{
+    QVector<double> dataVec = m_dataContainer.value(channel);
+    QMutex*    dataVecMutex = m_dataContainerMutex.at(channel);
+    {
+        QMutexLocker locker(dataVecMutex);
+        graph->setData(m_xAxisValue, dataVec);
+    }
 }
 
 

@@ -28,7 +28,7 @@ void MainWindow::updateUi()
     for (int channel=0; channel<CHANNEL_SIZE; channel++) {
         // set plot channel
         QString plotControlName = "channel" + QString::number(channel);
-        PlotArea* plot = this->findChild<PlotArea*>(plotControlName);
+        PlotWidget* plot = this->findChild<PlotWidget*>(plotControlName);
         if (!plot) {
             qWarning() << "Find plot error: can't find~~~ " << plotControlName;
             continue;
@@ -50,7 +50,7 @@ void MainWindow::on_btnStart_clicked()
     for (int channel=0; channel<CHANNEL_SIZE; channel++) {
         // set plot channel
         QString plotControlName = "channel" + QString::number(channel);
-        PlotArea* plot = this->findChild<PlotArea*>(plotControlName);
+        PlotWidget* plot = this->findChild<PlotWidget*>(plotControlName);
         if (!plot) {
             qWarning() << "Find plot error: can't find~~~ " << plotControlName;
             continue;
@@ -71,7 +71,7 @@ void MainWindow::on_btnStop_clicked()
     for (int channel=0; channel<CHANNEL_SIZE; channel++) {
         // set plot channel
         QString plotControlName = "channel" + QString::number(channel);
-        PlotArea* plot = this->findChild<PlotArea*>(plotControlName);
+        PlotWidget* plot = this->findChild<PlotWidget*>(plotControlName);
         if (!plot) {
             qWarning() << "Find plot error: can't find~~~ " << plotControlName;
             continue;

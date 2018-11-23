@@ -238,7 +238,7 @@ color: rgb(0, 0, 0);</string>
             <number>1</number>
            </property>
            <item row="7" column="0">
-            <widget class="PlotArea" name="channel14" native="true">
+            <widget class="PlotWidget" name="channel14" native="true">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -251,7 +251,7 @@ color: rgb(0, 0, 0);</string>
             </widget>
            </item>
            <item row="5" column="1">
-            <widget class="PlotArea" name="channel11" native="true">
+            <widget class="PlotWidget" name="channel11" native="true">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -264,7 +264,7 @@ color: rgb(0, 0, 0);</string>
             </widget>
            </item>
            <item row="3" column="1">
-            <widget class="PlotArea" name="channel7" native="true">
+            <widget class="PlotWidget" name="channel7" native="true">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -277,7 +277,7 @@ color: rgb(0, 0, 0);</string>
             </widget>
            </item>
            <item row="4" column="0">
-            <widget class="PlotArea" name="channel8" native="true">
+            <widget class="PlotWidget" name="channel8" native="true">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -290,7 +290,7 @@ color: rgb(0, 0, 0);</string>
             </widget>
            </item>
            <item row="3" column="0">
-            <widget class="PlotArea" name="channel6" native="true">
+            <widget class="PlotWidget" name="channel6" native="true">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -303,7 +303,7 @@ color: rgb(0, 0, 0);</string>
             </widget>
            </item>
            <item row="1" column="0">
-            <widget class="PlotArea" name="channel2" native="true">
+            <widget class="PlotWidget" name="channel2" native="true">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -316,7 +316,7 @@ color: rgb(0, 0, 0);</string>
             </widget>
            </item>
            <item row="0" column="0">
-            <widget class="PlotArea" name="channel0" native="true">
+            <widget class="PlotWidget" name="channel0" native="true">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -326,7 +326,7 @@ color: rgb(0, 0, 0);</string>
             </widget>
            </item>
            <item row="0" column="1">
-            <widget class="PlotArea" name="channel1" native="true">
+            <widget class="PlotWidget" name="channel1" native="true">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -336,7 +336,7 @@ color: rgb(0, 0, 0);</string>
             </widget>
            </item>
            <item row="2" column="0">
-            <widget class="PlotArea" name="channel4" native="true">
+            <widget class="PlotWidget" name="channel4" native="true">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -349,7 +349,7 @@ color: rgb(0, 0, 0);</string>
             </widget>
            </item>
            <item row="6" column="0">
-            <widget class="PlotArea" name="channel12" native="true">
+            <widget class="PlotWidget" name="channel12" native="true">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -362,7 +362,7 @@ color: rgb(0, 0, 0);</string>
             </widget>
            </item>
            <item row="6" column="1">
-            <widget class="PlotArea" name="channel13" native="true">
+            <widget class="PlotWidget" name="channel13" native="true">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -375,7 +375,7 @@ color: rgb(0, 0, 0);</string>
             </widget>
            </item>
            <item row="1" column="1">
-            <widget class="PlotArea" name="channel3" native="true">
+            <widget class="PlotWidget" name="channel3" native="true">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -388,7 +388,7 @@ color: rgb(0, 0, 0);</string>
             </widget>
            </item>
            <item row="7" column="1">
-            <widget class="PlotArea" name="channel15" native="true">
+            <widget class="PlotWidget" name="channel15" native="true">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -401,7 +401,7 @@ color: rgb(0, 0, 0);</string>
             </widget>
            </item>
            <item row="2" column="1">
-            <widget class="PlotArea" name="channel5" native="true">
+            <widget class="PlotWidget" name="channel5" native="true">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -414,7 +414,7 @@ color: rgb(0, 0, 0);</string>
             </widget>
            </item>
            <item row="5" column="0">
-            <widget class="PlotArea" name="channel10" native="true">
+            <widget class="PlotWidget" name="channel10" native="true">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -427,7 +427,7 @@ color: rgb(0, 0, 0);</string>
             </widget>
            </item>
            <item row="4" column="1">
-            <widget class="PlotArea" name="channel9" native="true">
+            <widget class="PlotWidget" name="channel9" native="true">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -451,9 +451,9 @@ color: rgb(0, 0, 0);</string>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>PlotArea</class>
+   <class>PlotWidget</class>
    <extends>QWidget</extends>
-   <header location="global">plotarea.h</header>
+   <header location="global">PlotWidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

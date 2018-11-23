@@ -25,7 +25,8 @@ SOURCES += main.cpp\
     ui/StartDlg.cpp \
     proccessor/EmgDataReceiver.cpp \
     proccessor/EmgDataRecorder.cpp \
-    ui/PlotArea.cpp
+    ui/PlotArea.cpp \
+    ui/PlotWidget.cpp
 
 HEADERS  += \
     ui/MainWindow.h \
@@ -34,7 +35,8 @@ HEADERS  += \
     Defines.h \
     proccessor/EmgDataReceiver.h \
     proccessor/EmgDataRecorder.h \
-    ui/PlotArea.h
+    ui/PlotArea.h \
+    ui/PlotWidget.h
 
 FORMS    += \
     ui/MainWindow.ui \

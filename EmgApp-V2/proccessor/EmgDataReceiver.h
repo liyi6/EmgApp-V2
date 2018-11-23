@@ -6,6 +6,7 @@
 #include <QByteArray>
 
 #include "Defines.h"
+#include "QCustomPlot.h"
 
 class EmgDataReceiver : public QObject
 {
@@ -14,28 +15,13 @@ public:
     ~EmgDataReceiver();
     static EmgDataReceiver* instance();
 
+    void updateGraph(int channel, QPointer<QCPGraph>& graph);
+
 signals:
     void netConnected();
     void netError();
     void orignalDataComming(QByteArray data);
     void dataComming(int channel, short data);
-
-    void channel0DataComming(QByteArray* data);
-    void channel1DataComming(QByteArray* data);
-    void channel2DataComming(QByteArray* data);
-    void channel3DataComming(QByteArray* data);
-    void channel4DataComming(QByteArray* data);
-    void channel5DataComming(QByteArray* data);
-    void channel6DataComming(QByteArray* data);
-    void channel7DataComming(QByteArray* data);
-    void channel8DataComming(QByteArray* data);
-    void channel9DataComming(QByteArray* data);
-    void channel10DataComming(QByteArray* data);
-    void channel11DataComming(QByteArray* data);
-    void channel12DataComming(QByteArray* data);
-    void channel13DataComming(QByteArray* data);
-    void channel14DataComming(QByteArray* data);
-    void channel15DataComming(QByteArray* data);
 
 public slots:
     void onConnectToHost();
@@ -49,29 +35,21 @@ private slots:
 
 private:
     explicit EmgDataReceiver(QObject *parent = 0);
-
-private:
     void dataProcess(QByteArray& data);
-    void dataProcessV2(QByteArray &data);
+    void dataProcessV3(QByteArray &data);
 
 private:
     static EmgDataReceiver* m_instance;
-
-private:
     QTcpSocket*   m_socket;     // Tcp通信socket
     bool          m_headFind;   // 是否找到数据头
     QByteArray    m_dataLeft;   // dataLeft为上次处理后的余留数据(当数据)
     int           m_curChennel; // 当前通道
 
+    QVector<double>              m_xAxisValue;
+    QHash<int, QVector<double>>  m_dataContainer;
+    QVector<QMutex*>             m_dataContainerMutex;
 
-    QByteArray* m_channel0Data = nullptr;
-//    QByteArray* channel1Data = nullptr;
-//    QByteArray* channel2Data = nullptr;
-//    QByteArray* channel3Data = nullptr;
-//    QByteArray* channel4Data = nullptr;
-//    QByteArray* channel5Data = nullptr;
-//    QByteArray* channel6Data = nullptr;
-//    QByteArray* channel7Data = nullptr;
+
 };
 
 #endif // EMGDATARECEIVER_H

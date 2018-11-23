@@ -6,6 +6,7 @@
 #include "QCustomPlot.h"
 #include "Defines.h"
 #include "PlotArea.h"
+#include "PlotWidget.h"
 #include "EmgDataReceiver.h"
 #include "EmgDataRecorder.h"
 
