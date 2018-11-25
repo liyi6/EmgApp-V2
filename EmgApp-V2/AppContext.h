@@ -9,6 +9,7 @@ class AppContext : public QObject
     Q_OBJECT
 public:
     static AppContext* instance();
+    static void destroyInstance();
     Context& getContext();
 
 private:

@@ -53,11 +53,11 @@ void EmgDataReceiver::resetDataContainer()
 
 EmgDataReceiver::~EmgDataReceiver()
 {
+    qDebug() << "~EmgDataReceiver() called.";
+
     if (m_socket && QAbstractSocket::UnconnectedState != m_socket->state()) {
         m_socket->close();
     }
-
-    qDebug() << "~EmgDataReceiver() called.";
 }
 
 EmgDataReceiver *EmgDataReceiver::instance()
@@ -66,6 +66,14 @@ EmgDataReceiver *EmgDataReceiver::instance()
         m_instance = new EmgDataReceiver;
     }
     return m_instance;
+}
+
+void EmgDataReceiver::destroyInstance()
+{
+    if (m_instance) {
+        delete m_instance;
+        m_instance = nullptr;
+    }
 }
 
 void EmgDataReceiver::onConnectToHost()

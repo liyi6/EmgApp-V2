@@ -1,5 +1,5 @@
-#ifndef RUNNINGCONTROLBTN_H
-#define RUNNINGCONTROLBTN_H
+#ifndef FULLSCREENCONTROLBTN_H
+#define FULLSCREENCONTROLBTN_H
 
 #include <QWidget>
 #include <QPushButton>
@@ -9,14 +9,12 @@
 #include <QPropertyAnimation>
 #include "CustomShadowEffect.h"
 
-class RunningControlBtn : public QPushButton
+class FullscreenControlBtn : public QPushButton
 {
     Q_OBJECT
 public:
-    explicit RunningControlBtn(QWidget *parent = nullptr);
-    ~RunningControlBtn();
-
-    void setRunningStatus(bool running);
+    explicit FullscreenControlBtn(QWidget *parent = nullptr);
+    ~FullscreenControlBtn();
 
 protected:
     void paintEvent(QPaintEvent *);
@@ -26,9 +24,7 @@ protected:
     void mouseReleaseEvent(QMouseEvent *event);
 
 private:
-    bool     m_running;
-    QImage*  m_startImage;
-    QImage*  m_stopImage;
+    QImage*  m_fullImage;
+    QImage*  m_normalImage;
 };
-
-#endif // RUNNINGCONTROLBTN_H
+#endif // FULLSCREENCONTROLBTN_H

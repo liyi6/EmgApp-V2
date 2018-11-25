@@ -1,10 +1,8 @@
-#include "RunningControlBtn.h"
+#include "MenuControlBtn.h"
 
-RunningControlBtn::RunningControlBtn(QWidget *parent)
+MenuControlBtn::MenuControlBtn(QWidget *parent)
     : QPushButton(parent),
-      m_running(false),
-      m_startImage(nullptr),
-      m_stopImage(nullptr)
+      m_backImage(nullptr)
 {
     setMouseTracking(true);
 
@@ -14,39 +12,24 @@ RunningControlBtn::RunningControlBtn(QWidget *parent)
     bodyShadow->setColor(QColor(0, 0, 0, 60));
     setGraphicsEffect(bodyShadow);
 
-    m_stopImage = new QImage("res/stop.png");
-    m_startImage = new QImage("res/start.png");
+    m_backImage = new QImage("res/setting.png");
 }
 
-RunningControlBtn::~RunningControlBtn()
+MenuControlBtn::~MenuControlBtn()
 {
-    if (m_stopImage) {
-        delete m_stopImage;
-        m_stopImage = nullptr;
-    }
-
-    if (m_startImage) {
-        delete m_startImage;
-        m_startImage = nullptr;
+    if (m_backImage) {
+        delete m_backImage;
+        m_backImage = nullptr;
     }
 }
 
-void RunningControlBtn::setRunningStatus(bool running)
-{
-    m_running = running;
-}
-
-void RunningControlBtn::paintEvent(QPaintEvent *)
+void MenuControlBtn::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
-    if (m_running) {
-        painter.drawImage(this->rect(), *m_stopImage);
-    } else {
-        painter.drawImage(this->rect(), *m_startImage);
-    }
+    painter.drawImage(this->rect(), *m_backImage);
 }
 
-void RunningControlBtn::enterEvent(QEvent *)
+void MenuControlBtn::enterEvent(QEvent *)
 {
     CustomShadowEffect *bodyShadow = new CustomShadowEffect();
     bodyShadow->setBlurRadius(25.0);
@@ -55,7 +38,7 @@ void RunningControlBtn::enterEvent(QEvent *)
     setGraphicsEffect(bodyShadow);
 }
 
-void RunningControlBtn::leaveEvent(QEvent *)
+void MenuControlBtn::leaveEvent(QEvent *)
 {
     CustomShadowEffect *bodyShadow = new CustomShadowEffect();
     bodyShadow->setBlurRadius(15.0);
@@ -64,7 +47,7 @@ void RunningControlBtn::leaveEvent(QEvent *)
     setGraphicsEffect(bodyShadow);
 }
 
-void RunningControlBtn::mousePressEvent(QMouseEvent *event)
+void MenuControlBtn::mousePressEvent(QMouseEvent *event)
 {
     CustomShadowEffect *bodyShadow = new CustomShadowEffect();
     bodyShadow->setBlurRadius(30.0);
@@ -75,7 +58,7 @@ void RunningControlBtn::mousePressEvent(QMouseEvent *event)
     QPushButton::mousePressEvent(event);
 }
 
-void RunningControlBtn::mouseReleaseEvent(QMouseEvent *event)
+void MenuControlBtn::mouseReleaseEvent(QMouseEvent *event)
 {
     CustomShadowEffect *bodyShadow = new CustomShadowEffect();
     bodyShadow->setBlurRadius(25.0);

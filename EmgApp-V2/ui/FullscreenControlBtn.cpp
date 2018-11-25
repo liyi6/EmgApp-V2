@@ -1,10 +1,9 @@
-#include "RunningControlBtn.h"
+#include "FullscreenControlBtn.h"
 
-RunningControlBtn::RunningControlBtn(QWidget *parent)
+FullscreenControlBtn::FullscreenControlBtn(QWidget *parent)
     : QPushButton(parent),
-      m_running(false),
-      m_startImage(nullptr),
-      m_stopImage(nullptr)
+      m_fullImage(nullptr),
+      m_normalImage(nullptr)
 {
     setMouseTracking(true);
 
@@ -14,39 +13,34 @@ RunningControlBtn::RunningControlBtn(QWidget *parent)
     bodyShadow->setColor(QColor(0, 0, 0, 60));
     setGraphicsEffect(bodyShadow);
 
-    m_stopImage = new QImage("res/stop.png");
-    m_startImage = new QImage("res/start.png");
+    m_fullImage = new QImage("res/fsc.png");
+    m_normalImage = new QImage("res/fsc.png");
 }
 
-RunningControlBtn::~RunningControlBtn()
+FullscreenControlBtn::~FullscreenControlBtn()
 {
-    if (m_stopImage) {
-        delete m_stopImage;
-        m_stopImage = nullptr;
+    if (m_fullImage) {
+        delete m_fullImage;
+        m_fullImage = nullptr;
     }
 
-    if (m_startImage) {
-        delete m_startImage;
-        m_startImage = nullptr;
+    if (m_normalImage) {
+        delete m_normalImage;
+        m_normalImage = nullptr;
     }
 }
 
-void RunningControlBtn::setRunningStatus(bool running)
-{
-    m_running = running;
-}
-
-void RunningControlBtn::paintEvent(QPaintEvent *)
+void FullscreenControlBtn::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
-    if (m_running) {
-        painter.drawImage(this->rect(), *m_stopImage);
+    if (Qt::WindowFullScreen == windowState()) {
+        painter.drawImage(this->rect(), *m_fullImage);
     } else {
-        painter.drawImage(this->rect(), *m_startImage);
+        painter.drawImage(this->rect(), *m_normalImage);
     }
 }
 
-void RunningControlBtn::enterEvent(QEvent *)
+void FullscreenControlBtn::enterEvent(QEvent *)
 {
     CustomShadowEffect *bodyShadow = new CustomShadowEffect();
     bodyShadow->setBlurRadius(25.0);
@@ -55,7 +49,7 @@ void RunningControlBtn::enterEvent(QEvent *)
     setGraphicsEffect(bodyShadow);
 }
 
-void RunningControlBtn::leaveEvent(QEvent *)
+void FullscreenControlBtn::leaveEvent(QEvent *)
 {
     CustomShadowEffect *bodyShadow = new CustomShadowEffect();
     bodyShadow->setBlurRadius(15.0);
@@ -64,7 +58,7 @@ void RunningControlBtn::leaveEvent(QEvent *)
     setGraphicsEffect(bodyShadow);
 }
 
-void RunningControlBtn::mousePressEvent(QMouseEvent *event)
+void FullscreenControlBtn::mousePressEvent(QMouseEvent *event)
 {
     CustomShadowEffect *bodyShadow = new CustomShadowEffect();
     bodyShadow->setBlurRadius(30.0);
@@ -75,7 +69,7 @@ void RunningControlBtn::mousePressEvent(QMouseEvent *event)
     QPushButton::mousePressEvent(event);
 }
 
-void RunningControlBtn::mouseReleaseEvent(QMouseEvent *event)
+void FullscreenControlBtn::mouseReleaseEvent(QMouseEvent *event)
 {
     CustomShadowEffect *bodyShadow = new CustomShadowEffect();
     bodyShadow->setBlurRadius(25.0);

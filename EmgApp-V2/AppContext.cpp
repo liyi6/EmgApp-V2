@@ -10,6 +10,14 @@ AppContext *AppContext::instance()
     return m_instance;
 }
 
+void AppContext::destroyInstance()
+{
+    if (m_instance) {
+        delete m_instance;
+        m_instance = nullptr;
+    }
+}
+
 Context &AppContext::getContext()
 {
     return m_context;

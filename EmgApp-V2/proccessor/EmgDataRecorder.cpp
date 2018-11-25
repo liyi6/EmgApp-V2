@@ -1,10 +1,10 @@
 ﻿#include "EmgDataRecorder.h"
 
-EmgDataRecorder* EmgDataRecorder::m_instance = NULL;
+EmgDataRecorder* EmgDataRecorder::m_instance = nullptr;
 
 EmgDataRecorder::EmgDataRecorder(QObject *parent)
     : QObject(parent),
-      m_recordFile(NULL)
+      m_recordFile(nullptr)
 {
 
 }
@@ -15,6 +15,14 @@ EmgDataRecorder *EmgDataRecorder::instance()
         m_instance = new EmgDataRecorder;
     }
     return m_instance;
+}
+
+void EmgDataRecorder::destroyInstance()
+{
+    if (m_instance) {
+        delete m_instance;
+        m_instance = nullptr;
+    }
 }
 
 EmgDataRecorder::~EmgDataRecorder()
@@ -43,7 +51,7 @@ void EmgDataRecorder::onStartRecord()
     m_recordFile = new QFile(recordFilePath);
     if (!m_recordFile->open(QIODevice::WriteOnly | QIODevice::Truncate)) {
         qWarning() << "Fail to Open record file.";
-        m_recordFile = NULL;
+        m_recordFile = nullptr;
         return;
     }
 }

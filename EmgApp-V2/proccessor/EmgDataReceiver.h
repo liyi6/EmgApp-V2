@@ -14,6 +14,7 @@ class EmgDataReceiver : public QObject
 public:
     ~EmgDataReceiver();
     static EmgDataReceiver* instance();
+    static void destroyInstance();
 
     void updateGraph(int channel, QPointer<QCPGraph>& graph);
 

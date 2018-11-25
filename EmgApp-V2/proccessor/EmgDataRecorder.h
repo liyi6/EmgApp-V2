@@ -14,6 +14,7 @@ class EmgDataRecorder : public QObject
     Q_OBJECT
 public:
     static EmgDataRecorder* instance();
+    static void destroyInstance();
     ~EmgDataRecorder();
 
 public slots:

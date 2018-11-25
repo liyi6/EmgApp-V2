@@ -10,6 +10,7 @@
 #include "PlotWidget.h"
 #include "EmgDataReceiver.h"
 #include "EmgDataRecorder.h"
+#include "SettingDlg.h"
 
 namespace Ui {
 class MainWindow;
@@ -39,19 +40,22 @@ protected:
 private slots:
     void on_btnFsc_clicked();
     void on_btnStart_clicked();
-    void on_btnPrePage_clicked();
-    void on_btnNextPage_clicked();
-    void onHideCtrl();
+    void on_btnMenu_clicked();
+
+    void onShowPrePage();
+    void onShowNextPage();
 
 private:
     void updateUi();
 
 private:
-    Ui::MainWindow *ui;
+    Ui::MainWindow*  ui;
+
 
 private:
-    int        m_curPage;
-    RunStatus  m_runStatus;
+    int            m_curPage;
+    RunStatus      m_runStatus;
+    SettingDlg*    m_settingDlg;
 };
 
 #endif // MAINWINDOW_H

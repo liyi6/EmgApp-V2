@@ -43,5 +43,6 @@ void StartDlg::onConnected()
 
 void StartDlg::onConnectError()
 {
+    qWarning() << "Connect to host failed.";
     QMessageBox::warning(this, QStringLiteral("提示"), QStringLiteral("连接服务器失败,请检查网络或者是服务是否开启"), QMessageBox::Ok);
 }

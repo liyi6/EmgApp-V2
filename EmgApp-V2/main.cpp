@@ -8,9 +8,10 @@ int main(int argc, char *argv[])
 {
     Application a(argc, argv);
 
-
+    a.initLog();
     a.initSettings();
     a.initThread();
+    a.startBatchProcess();
 
     StartDlg dlg;
     MainWindow main;
@@ -18,7 +19,7 @@ int main(int argc, char *argv[])
     if (QDialog::Accepted == dlg.exec()) {
         main.show();
     } else {
-        a.shutThreadDown();
+        a.clean();
         return 0;
     }
     return a.exec();

@@ -29,7 +29,11 @@ SOURCES += main.cpp\
     Application.cpp \
     util/Utils.cpp \
     AppContext.cpp \
-    ui/CustomShadowEffect.cpp
+    ui/CustomShadowEffect.cpp \
+    ui/SettingDlg.cpp \
+    log/Logger.cpp \
+    ui/MenuControlBtn.cpp \
+    ui/FullscreenControlBtn.cpp
 
 HEADERS  += \
     ui/MainWindow.h \
@@ -43,18 +47,24 @@ HEADERS  += \
     Application.h \
     util/Utils.h \
     AppContext.h \
-    ui/CustomShadowEffect.h
+    ui/CustomShadowEffect.h \
+    ui/SettingDlg.h \
+    log/Logger.h \
+    ui/MenuControlBtn.h \
+    ui/FullscreenControlBtn.h
 
 FORMS    += \
     ui/MainWindow.ui \
-    ui/StartDlg.ui
+    ui/StartDlg.ui \
+    ui/SettingDlg.ui
     ui/MainWindow.ui
 
 
 INCLUDEPATH += \
     ui/ \
     proccessor/ \
-    util/
+    util/ \
+    log/
 
 DISTFILES += \
     EmgApp-V2.pro.user
