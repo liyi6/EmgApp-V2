@@ -36,8 +36,8 @@ void EmgDataRecorder::onOrignalDataComming(QByteArray data)
 void EmgDataRecorder::onStartRecord()
 {
     QDir recordFileDir;
-    recordFileDir.mkpath(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));
-    QString recordFilePath = QString(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/" + "emg-%1").arg(QDateTime::currentDateTime().toString("yyyy-MM-dd-hh-mm-ss") + ".dat");
+    recordFileDir.mkpath(Utils::getAppHomeDir()+ "/save/");
+    QString recordFilePath = QString(Utils::getAppHomeDir() + "/save/" + "emg-%1").arg(QDateTime::currentDateTime().toString("yyyy-MM-dd-hh-mm-ss") + ".dat");
     qDebug() << "Create a new record file, path:" << recordFilePath;
 
     m_recordFile = new QFile(recordFilePath);

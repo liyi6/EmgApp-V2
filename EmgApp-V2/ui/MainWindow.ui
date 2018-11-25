@@ -15,174 +15,6 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
-    <property name="spacing">
-     <number>0</number>
-    </property>
-    <property name="leftMargin">
-     <number>0</number>
-    </property>
-    <property name="topMargin">
-     <number>0</number>
-    </property>
-    <property name="rightMargin">
-     <number>0</number>
-    </property>
-    <property name="bottomMargin">
-     <number>0</number>
-    </property>
-    <item>
-     <widget class="QWidget" name="ctrlPanel" native="true">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>60</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>60</height>
-       </size>
-      </property>
-      <property name="baseSize">
-       <size>
-        <width>1600</width>
-        <height>60</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <widget class="QPushButton" name="btnFsc">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>40</width>
-         <height>40</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>40</width>
-         <height>40</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>40</width>
-         <height>40</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-         <pointsize>8</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.494, fy:0.506, stop:0.0852273 rgba(255, 255, 255, 255), stop:0.892045 rgba(0, 0, 0, 227));
-color: rgb(0, 0, 0);
-</string>
-       </property>
-       <property name="text">
-        <string>FSC</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="btnStart">
-       <property name="geometry">
-        <rect>
-         <x>110</x>
-         <y>0</y>
-         <width>75</width>
-         <height>60</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>75</width>
-         <height>60</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>75</width>
-         <height>60</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.494, fy:0.506, stop:0.0852273 rgba(255, 255, 255, 255), stop:0.892045 rgba(0, 0, 0, 227));
-color: rgb(0, 0, 0);</string>
-       </property>
-       <property name="text">
-        <string>Start</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="btnStop">
-       <property name="geometry">
-        <rect>
-         <x>220</x>
-         <y>0</y>
-         <width>75</width>
-         <height>60</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>75</width>
-         <height>60</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.494, fy:0.506, stop:0.0852273 rgba(255, 255, 255, 255), stop:0.892045 rgba(0, 0, 0, 227));
-color: rgb(0, 0, 0);</string>
-       </property>
-       <property name="text">
-        <string>Stop</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="btnMenu">
-       <property name="geometry">
-        <rect>
-         <x>1540</x>
-         <y>0</y>
-         <width>60</width>
-         <height>60</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>60</width>
-         <height>60</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>60</width>
-         <height>60</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.494, fy:0.506, stop:0.0852273 rgba(255, 255, 255, 255), stop:0.892045 rgba(0, 0, 0, 227));
-color: rgb(0, 0, 0);</string>
-       </property>
-       <property name="text">
-        <string>Menu</string>
-       </property>
-      </widget>
-     </widget>
-    </item>
     <item>
      <widget class="QWidget" name="dataPanel" native="true">
       <property name="maximumSize">
@@ -194,127 +26,44 @@ color: rgb(0, 0, 0);</string>
       <property name="styleSheet">
        <string notr="true"/>
       </property>
-      <layout class="QGridLayout" name="gridLayout">
+      <layout class="QGridLayout" name="gridLayout" rowstretch="0" columnstretch="0" rowminimumheight="0" columnminimumwidth="0">
        <property name="leftMargin">
-        <number>0</number>
+        <number>2</number>
        </property>
        <property name="topMargin">
-        <number>0</number>
+        <number>2</number>
        </property>
        <property name="rightMargin">
-        <number>0</number>
+        <number>2</number>
        </property>
        <property name="bottomMargin">
-        <number>0</number>
+        <number>2</number>
+       </property>
+       <property name="spacing">
+        <number>2</number>
        </property>
        <item row="0" column="0">
-        <widget class="QScrollArea" name="scrollArea">
-         <property name="widgetResizable">
-          <bool>true</bool>
+        <widget class="QStackedWidget" name="stackedWidget">
+         <property name="currentIndex">
+          <number>0</number>
          </property>
-         <widget class="QWidget" name="scrollAreaWidgetContents">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>1581</width>
-            <height>1607</height>
-           </rect>
-          </property>
-          <layout class="QGridLayout" name="gridLayout_2">
+         <widget class="QWidget" name="page">
+          <layout class="QGridLayout" name="gridLayout_4">
            <property name="leftMargin">
             <number>0</number>
            </property>
            <property name="topMargin">
-            <number>0</number>
+            <number>8</number>
            </property>
            <property name="rightMargin">
             <number>0</number>
            </property>
            <property name="bottomMargin">
-            <number>0</number>
+            <number>8</number>
            </property>
            <property name="spacing">
-            <number>1</number>
+            <number>20</number>
            </property>
-           <item row="7" column="0">
-            <widget class="PlotWidget" name="channel14" native="true">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>200</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="1">
-            <widget class="PlotWidget" name="channel11" native="true">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>200</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="1">
-            <widget class="PlotWidget" name="channel7" native="true">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>200</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="0">
-            <widget class="PlotWidget" name="channel8" native="true">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>200</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0">
-            <widget class="PlotWidget" name="channel6" native="true">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>200</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="PlotWidget" name="channel2" native="true">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>200</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-            </widget>
-           </item>
            <item row="0" column="0">
             <widget class="PlotWidget" name="channel0" native="true">
              <property name="minimumSize">
@@ -335,34 +84,8 @@ color: rgb(0, 0, 0);</string>
              </property>
             </widget>
            </item>
-           <item row="2" column="0">
-            <widget class="PlotWidget" name="channel4" native="true">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>200</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="0">
-            <widget class="PlotWidget" name="channel12" native="true">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>200</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="1">
-            <widget class="PlotWidget" name="channel13" native="true">
+           <item row="1" column="0">
+            <widget class="PlotWidget" name="channel2" native="true">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -387,20 +110,36 @@ color: rgb(0, 0, 0);</string>
              </property>
             </widget>
            </item>
-           <item row="7" column="1">
-            <widget class="PlotWidget" name="channel15" native="true">
+          </layout>
+         </widget>
+         <widget class="QWidget" name="page1">
+          <layout class="QGridLayout" name="gridLayout_5">
+           <property name="leftMargin">
+            <number>8</number>
+           </property>
+           <property name="topMargin">
+            <number>8</number>
+           </property>
+           <property name="rightMargin">
+            <number>8</number>
+           </property>
+           <property name="bottomMargin">
+            <number>8</number>
+           </property>
+           <property name="spacing">
+            <number>20</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="PlotWidget" name="channel4" native="true">
              <property name="minimumSize">
               <size>
                <width>0</width>
                <height>200</height>
               </size>
              </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
             </widget>
            </item>
-           <item row="2" column="1">
+           <item row="0" column="1">
             <widget class="PlotWidget" name="channel5" native="true">
              <property name="minimumSize">
               <size>
@@ -408,12 +147,74 @@ color: rgb(0, 0, 0);</string>
                <height>200</height>
               </size>
              </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="PlotWidget" name="channel6" native="true">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>200</height>
+              </size>
+             </property>
              <property name="styleSheet">
               <string notr="true"/>
              </property>
             </widget>
            </item>
-           <item row="5" column="0">
+           <item row="1" column="1">
+            <widget class="PlotWidget" name="channel7" native="true">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>200</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="page2">
+          <layout class="QGridLayout" name="gridLayout_2">
+           <property name="leftMargin">
+            <number>8</number>
+           </property>
+           <property name="topMargin">
+            <number>8</number>
+           </property>
+           <property name="rightMargin">
+            <number>8</number>
+           </property>
+           <property name="bottomMargin">
+            <number>8</number>
+           </property>
+           <property name="spacing">
+            <number>20</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="PlotWidget" name="channel8" native="true">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>200</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="PlotWidget" name="channel9" native="true">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>200</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
             <widget class="PlotWidget" name="channel10" native="true">
              <property name="minimumSize">
               <size>
@@ -426,8 +227,73 @@ color: rgb(0, 0, 0);</string>
              </property>
             </widget>
            </item>
-           <item row="4" column="1">
-            <widget class="PlotWidget" name="channel9" native="true">
+           <item row="1" column="1">
+            <widget class="PlotWidget" name="channel11" native="true">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>200</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="page3">
+          <layout class="QGridLayout" name="gridLayout_3">
+           <property name="leftMargin">
+            <number>8</number>
+           </property>
+           <property name="topMargin">
+            <number>8</number>
+           </property>
+           <property name="rightMargin">
+            <number>8</number>
+           </property>
+           <property name="bottomMargin">
+            <number>8</number>
+           </property>
+           <property name="spacing">
+            <number>20</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="PlotWidget" name="channel12" native="true">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>200</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="PlotWidget" name="channel13" native="true">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>200</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="PlotWidget" name="channel14" native="true">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>200</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="PlotWidget" name="channel15" native="true">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -446,6 +312,172 @@ color: rgb(0, 0, 0);</string>
       </layout>
      </widget>
     </item>
+    <item>
+     <widget class="QWidget" name="ctrlPanel" native="true">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>80</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="baseSize">
+       <size>
+        <width>1600</width>
+        <height>80</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:white;</string>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="spacing">
+        <number>2</number>
+       </property>
+       <property name="leftMargin">
+        <number>2</number>
+       </property>
+       <property name="topMargin">
+        <number>2</number>
+       </property>
+       <property name="rightMargin">
+        <number>2</number>
+       </property>
+       <property name="bottomMargin">
+        <number>2</number>
+       </property>
+       <item>
+        <widget class="RunningControlBtn" name="btnStart">
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>60</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>64</width>
+           <height>64</height>
+          </size>
+         </property>
+         <property name="baseSize">
+          <size>
+           <width>60</width>
+           <height>60</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnPrePage">
+         <property name="minimumSize">
+          <size>
+           <width>75</width>
+           <height>60</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>75</width>
+           <height>60</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>&lt;--</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnNextPage">
+         <property name="minimumSize">
+          <size>
+           <width>75</width>
+           <height>60</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>75</width>
+           <height>60</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>--&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnMenu">
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>60</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>60</width>
+           <height>60</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Menu</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnFsc">
+         <property name="minimumSize">
+          <size>
+           <width>40</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>40</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial</family>
+           <pointsize>8</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>FSC</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
    </layout>
   </widget>
  </widget>
@@ -455,6 +487,11 @@ color: rgb(0, 0, 0);</string>
    <extends>QWidget</extends>
    <header location="global">PlotWidget.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>RunningControlBtn</class>
+   <extends>QPushButton</extends>
+   <header location="global">RunningControlBtn.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

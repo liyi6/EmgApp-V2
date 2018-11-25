@@ -3,9 +3,10 @@
 
 #include <QMainWindow>
 #include <QPointer>
+#include <QParallelAnimationGroup>
+#include <QSequentialAnimationGroup>
 #include "QCustomPlot.h"
 #include "Defines.h"
-#include "PlotArea.h"
 #include "PlotWidget.h"
 #include "EmgDataReceiver.h"
 #include "EmgDataRecorder.h"
@@ -19,23 +20,38 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    enum RunStatus {
+        NotRunning,
+        Running
+    };
+
+public:
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
 signals:
     void start();
     void stop();
 
+protected:
+    void mousePressEvent(QMouseEvent*);
+
 private slots:
     void on_btnFsc_clicked();
     void on_btnStart_clicked();
-    void on_btnStop_clicked();
+    void on_btnPrePage_clicked();
+    void on_btnNextPage_clicked();
+    void onHideCtrl();
 
 private:
     void updateUi();
 
 private:
     Ui::MainWindow *ui;
+
+private:
+    int        m_curPage;
+    RunStatus  m_runStatus;
 };
 
 #endif // MAINWINDOW_H

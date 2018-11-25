@@ -7,6 +7,7 @@
 #include <QStandardPaths>
 #include <QDebug>
 #include <QDateTime>
+#include "Utils.h"
 
 class EmgDataRecorder : public QObject
 {
@@ -21,7 +22,7 @@ public slots:
     void onOrignalDataComming(QByteArray data);
 
 private:
-    explicit EmgDataRecorder(QObject *parent = 0);
+    explicit EmgDataRecorder(QObject *parent = nullptr);
 
 private:
     static EmgDataRecorder* m_instance;

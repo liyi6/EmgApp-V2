@@ -18,15 +18,18 @@ CONFIG(debug, debug|release){
 TARGET = EmgApp-V2
 TEMPLATE = app
 
-
 SOURCES += main.cpp\
     ui/MainWindow.cpp \
     ui/QCustomPlot.cpp \
     ui/StartDlg.cpp \
     proccessor/EmgDataReceiver.cpp \
     proccessor/EmgDataRecorder.cpp \
-    ui/PlotArea.cpp \
-    ui/PlotWidget.cpp
+    ui/PlotWidget.cpp \
+    ui/RunningControlBtn.cpp \
+    Application.cpp \
+    util/Utils.cpp \
+    AppContext.cpp \
+    ui/CustomShadowEffect.cpp
 
 HEADERS  += \
     ui/MainWindow.h \
@@ -35,8 +38,12 @@ HEADERS  += \
     Defines.h \
     proccessor/EmgDataReceiver.h \
     proccessor/EmgDataRecorder.h \
-    ui/PlotArea.h \
-    ui/PlotWidget.h
+    ui/PlotWidget.h \
+    ui/RunningControlBtn.h \
+    Application.h \
+    util/Utils.h \
+    AppContext.h \
+    ui/CustomShadowEffect.h
 
 FORMS    += \
     ui/MainWindow.ui \
@@ -46,7 +53,10 @@ FORMS    += \
 
 INCLUDEPATH += \
     ui/ \
-    proccessor/
+    proccessor/ \
+    util/
 
 DISTFILES += \
     EmgApp-V2.pro.user
+
+#DEFINES += QCUSTOMPLOT_USE_OPENGL

@@ -16,7 +16,7 @@ class StartDlg : public QDialog
     Q_OBJECT
 
 public:
-    explicit StartDlg(QWidget *parent = 0);
+    explicit StartDlg(QWidget *parent = nullptr);
     ~StartDlg();
 
 protected:
